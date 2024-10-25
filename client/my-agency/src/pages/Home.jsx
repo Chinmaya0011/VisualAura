@@ -11,23 +11,27 @@ import Footer from '../components/Footer';
 import Contact from '../components/Contact';
 import Pricing from '../components/Pricing';
 import TeamMetrics from '../components/metricsData';
+import NotificationBar from '../components/NotificationBar';
+
 const Home = () => (
   <>
-    <Navbar />
-    <Hero />
-
-
-    <Services />
-        <TechnologiesUsed />
-    <Portfolio />
-    <Testimonials />
-    <Pricing/>
-    <TeamMetrics/>
-    <OurTeam />
-    <AboutUs />
-    <CTA />
-    <Contact/>
-    <Footer />
+    <NotificationBar />
+   
+    <div className="mt-16"> {/* Add margin-top to prevent overlap */}
+      <Navbar />
+       <Hero />
+      <Services />
+      <TechnologiesUsed />
+      <Portfolio />
+      <Testimonials />
+      <Pricing />
+      <TeamMetrics />
+      <OurTeam />
+      <AboutUs />
+      <CTA />
+      <Contact />
+      <Footer />
+    </div>
   </>
 );
 
