@@ -27,6 +27,7 @@ const Hero = () => {
               fontFamily: '"Arial Black", Gadget, sans-serif',
               transform: 'perspective(500px) translateZ(0)',
               filter: 'drop-shadow(0 4px 12px rgba(0, 0, 255, 0.6))',
+              transition: 'transform 0.3s ease', // Adding a transition effect
             }}
           >
             Complete Online Solutions for Your Business
@@ -66,26 +67,25 @@ const Hero = () => {
         </div>
 
         <div className="flex justify-center items-center mt-10 lg:mt-0 lg:w-1/2">
-  <form className=" p-6 rounded shadow-lg w-full max-w-md bg-opacity-25 ">
-    <h2 className="text-2xl font-bold text-white text-center mb-4">Get in Touch</h2>
-    <div className="mb-4 flex items-center border-b border-white">
-      <FaEnvelope className="text-white mr-2" />
-      <input
-        type="email"
-        className="w-full px-4 py-2 bg-transparent text-white placeholder-gray-300 focus:outline-none"
-        placeholder="Your Email"
-        required
-      />
-    </div>
-    <button
-      type="submit"
-      className="w-full px-4 py-2 font-semibold text-white bg-orange-500 rounded hover:bg-orange-600 transition duration-300"
-    >
-      Get in Touch
-    </button>
-  </form>
-</div>
-
+          <form className="p-6 rounded shadow-lg w-full max-w-md bg-opacity-25 bg-black">
+            <h2 className="text-2xl font-bold text-white text-center mb-4">Get in Touch</h2>
+            <div className="mb-4 flex items-center border-b border-white">
+              <FaEnvelope className="text-white mr-2" />
+              <input
+                type="email"
+                className="w-full px-4 py-2 bg-transparent text-white placeholder-gray-300 focus:outline-none"
+                placeholder="Your Email"
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full px-4 py-2 font-semibold text-white bg-orange-500 rounded hover:bg-orange-600 transition duration-300"
+            >
+              Get in Touch
+            </button>
+          </form>
+        </div>
       </section>
     </div>
   );

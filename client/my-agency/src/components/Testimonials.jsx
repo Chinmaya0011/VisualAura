@@ -40,13 +40,12 @@ const testimonials = [
 
 // Background colors for each testimonial
 const bgColors = [
-  "bg-blue-50 bg-opacity-0",
-  "bg-pink-50 bg-opacity-0",
-  "bg-green-50 bg-opacity-0",
-  "bg-yellow-50 bg-opacity-0",
-  "bg-purple-50 bg-opacity-0",
+  "bg-blue-50",
+  "bg-pink-50",
+  "bg-green-50",
+  "bg-yellow-50",
+  "bg-purple-50",
 ];
-
 
 // Function to truncate feedback text
 const truncateText = (text, wordLimit) => {
@@ -58,9 +57,9 @@ const Testimonials = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 600,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 4000,
     slidesToShow: 3,
     slidesToScroll: 1,
     centerMode: true,
@@ -70,7 +69,7 @@ const Testimonials = () => {
         breakpoint: 1024,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
           centerPadding: '15px',
         },
       },
@@ -86,31 +85,43 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="py-12 bg-gray-100 px-6 md:px-12 lg:px-24">
-      <h2 className="text-4xl font-bold text-center mb-8">What Our Clients Say</h2>
+    <section className="py-16 bg-gradient-to-r from-gray-100 via-gray-50 to-white px-6 md:px-12 lg:px-24">
+      <h2 className="text-5xl font-extrabold text-center mb-12 text-gray-900">
+        What Our Clients Say
+      </h2>
       <div className="overflow-hidden">
         <Slider {...settings}>
           {testimonials.map((client, index) => (
-           <div
-           key={index}
-           className={`shadow-md rounded-md ${bgColors[index % bgColors.length]} mx-4 my-4 p-2 `}
-           style={{
-             width: '260px',   // Fixed width for the card
-             height: '360px',  // Fixed height for the card
-             display: 'flex',
-             flexDirection: 'column',
-             justifyContent: 'space-between',
-           }}
-         >
-           <div className="flex flex-col items-center gap-2 m-1 p-2">
-             <FaRegUser className="text-gray-500 w-16 h-16 rounded-full bg-gray-300 p-2" />
-             <h3 className="text-md font-semibold">{client.name}</h3>
-             <p className="text-sm text-gray-600">{client.role}</p>
-           </div>
-           
-           <p className="mt-4 text-center italic">"{truncateText(client.feedback, 12)}"</p>
-         </div>
-         
+            <div
+              key={index}
+              className={`relative shadow-xl rounded-2xl p-6 transition-transform transform hover:scale-105 ${bgColors[index % bgColors.length]} mx-4 my-4`}
+              style={{
+                width: '280px',
+                height: '380px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                perspective: '1000px',
+              }}
+            >
+              {/* 3D Inner Content */}
+              <div className="relative flex flex-col items-center gap-2 p-4 transition-transform transform hover:rotate-1 hover:translate-y-1 hover:shadow-lg">
+                <FaRegUser className="text-gray-500 w-16 h-16 rounded-full bg-gray-200 p-2 shadow-md" />
+                <h3 className="text-xl font-semibold text-gray-800">{client.name}</h3>
+                <p className="text-sm text-gray-500">{client.role}</p>
+              </div>
+
+              {/* Feedback Section */}
+              <p className="mt-4 text-center italic text-gray-700">
+                "{truncateText(client.feedback, 12)}"
+              </p>
+
+              {/* Floating Glow Effect */}
+              <div
+                className="absolute inset-0 rounded-2xl opacity-0 hover:opacity-100 bg-gradient-to-br from-blue-300 to-purple-400 mix-blend-multiply blur-xl transition-all duration-500"
+                style={{ zIndex: -1 }}
+              />
+            </div>
           ))}
         </Slider>
       </div>

@@ -161,54 +161,65 @@ const Pricing = () => {
   ];
 
   return (
-    <section className="py-16 bg-gray-100 text-center">
-      <h2 className="text-4xl font-bold mb-8 text-gray-800">Our Pricing</h2>
-      <div className="overflow-hidden px-4 md:px-8">
-        <div className="flex space-x-8 pb-4 overflow-x-auto">
-          {pricingData.map((item, index) => (
-            <div
-              key={index}
-              className="bg-white shadow-2xl rounded-lg p-6 w-72 h-[500px] flex-shrink-0 transition-transform transform hover:shadow-lg border-l-8 border-blue-500 overflow-hidden"
-            >
-              {/* Service Title */}
-              <h3 className="text-2xl font-semibold mb-4 text-blue-600 text-center h-10">
-                {item.service}
-              </h3>
-
-              {/* Price */}
-               <p className="text-lg font-medium text-gray-500 mb-2">
-                <p className="text-3xl font-bold text-orange-500 mb-1">
+    <section className="py-24 bg-gradient-to-r from-indigo-100 via-blue-50 to-blue-100 text-center">
+    <h2 className="text-5xl font-extrabold mb-16 text-gray-800 tracking-wider uppercase">
+      Our Pricing Plans
+    </h2>
+  
+    <div className="overflow-hidden px-6 md:px-20 lg:px-32">
+      <div className="flex space-x-8 overflow-x-auto pb-10 scrollbar-hide snap-x snap-mandatory">
+        {pricingData.map((item, index) => (
+          <div
+            key={index}
+            className="bg-white shadow-lg rounded-xl p-10 w-80 h-[600px] flex-shrink-0 transition-transform duration-500  hover:shadow-2xl border-l-[6px] border-blue-500 relative snap-center"
+          >
+            {/* Badge */}
+            <div className="absolute top-0 right-0 bg-green-500 text-white text-sm px-3 py-1 rounded-bl-lg shadow-md">
+              Save {Math.round(((parseInt(item.price.replace('₹', '')) - parseInt(item.startingPrice.replace('₹', ''))) / parseInt(item.price.replace('₹', ''))) * 100)}%
+            </div>
+  
+            {/* Service Title */}
+            <h3 className="text-2xl font-bold mb-4 text-blue-700 text-center tracking-wide">
+              {item.service}
+            </h3>
+  
+            {/* Price */}
+            <div className="flex justify-center items-baseline mb-4">
+              <p className="text-4xl font-extrabold text-orange-500 mr-2">
                 {item.startingPrice}
               </p>
-              </p>
-              <span className="line-through text-red-500">{item.price}</span>
-
-            
-
-              {/* Description */}
-              <p className="mb-4 text-gray-600 h-20 overflow-hidden">
-                {item.description}
-              </p>
-
-              {/* Features List */}
-              <h4 className="text-lg font-semibold mb-2">Features:</h4>
-              <ul className="list-disc list-inside mb-6 text-left max-h-32 overflow-y-auto">
-                {item.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="text-gray-700">{feature}</li>
-                ))}
-              </ul>
-
-              {/* Choose Plan Button */}
-              <div className="flex justify-center">
-                <button className="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-200 w-full">
-                  Choose Plan
-                </button>
-              </div>
+              <span className="line-through text-red-500 text-lg">
+                {item.price}
+              </span>
             </div>
-          ))}
-        </div>
+  
+            {/* Description */}
+            <p className="mb-8 text-gray-600 h-24 overflow-hidden text-center">
+              {item.description}
+            </p>
+  
+            {/* Features List */}
+            <h4 className="text-lg font-semibold mb-3 text-blue-600">
+              Features:
+            </h4>
+            <ul className="list-disc list-inside mb-6 text-left max-h-32 overflow-y-auto scrollbar-thin scrollbar-thumb-blue-400 scrollbar-track-blue-100">
+              {item.features.map((feature, featureIndex) => (
+                <li key={featureIndex} className="text-gray-700 leading-relaxed">
+                  {feature}
+                </li>
+              ))}
+            </ul>
+  
+            {/* Choose Plan Button */}
+            <button className="bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 text-white py-3 px-8 rounded-lg hover:from-indigo-500 hover:to-blue-500 transition-all duration-300 w-full shadow-lg hover:shadow-xl">
+              Choose Plan
+            </button>
+          </div>
+        ))}
       </div>
-    </section>
+    </div>
+  </section>
+  
   );
 };
 
