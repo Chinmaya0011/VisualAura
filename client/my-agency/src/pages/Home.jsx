@@ -9,16 +9,22 @@ import OurTeam from '../components/OurTeam';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
 import Contact from '../components/Contact';
+import Pricing from '../components/Pricing';
+import TeamMetrics from '../components/metricsData';
 const Home = () => (
   <>
     <Navbar />
     <Hero />
-    <AboutUs />
-    <TechnologiesUsed />
+
+
     <Services />
+        <TechnologiesUsed />
     <Portfolio />
     <Testimonials />
+    <Pricing/>
+    <TeamMetrics/>
     <OurTeam />
+    <AboutUs />
     <CTA />
     <Contact/>
     <Footer />

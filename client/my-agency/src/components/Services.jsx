@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaCode, FaSearch, FaBullhorn, FaMobileAlt, FaUsers, FaChartLine, FaShieldAlt, FaCloud, FaFileAlt, FaChartPie, FaComments, FaHandsHelping, FaCog, FaTools, FaSignInAlt, FaClipboardList, FaMoneyBillAlt, FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import { FaCode, FaSearch, FaBullhorn, FaMobileAlt, FaUsers, FaChartLine, FaCloud, FaFileAlt, FaChartPie, FaComments, FaHandsHelping, FaCog, FaTools, FaSignInAlt, FaClipboardList, FaMoneyBillAlt, FaAngleDown, FaAngleUp } from 'react-icons/fa';
 
 const servicesData = [
   {
@@ -46,80 +46,45 @@ const servicesData = [
   },
   {
     id: 7,
-    icon: <FaShieldAlt className="text-white text-5xl mb-4" />,
-    title: 'Cybersecurity',
-    description: 'Protecting your digital assets with robust security measures and audits.',
-    bgColor: 'bg-gradient-to-br from-red-500 to-yellow-600',
-  },
-  {
-    id: 8,
-    icon: <FaCloud className="text-white text-5xl mb-4" />,
-    title: 'Cloud Solutions',
-    description: 'Implementing cloud services for better scalability and performance.',
-    bgColor: 'bg-gradient-to-br from-purple-600 to-pink-600',
-  },
-  {
-    id: 9,
     icon: <FaFileAlt className="text-white text-5xl mb-4" />,
     title: 'Content Creation',
     description: 'Producing high-quality content that resonates with your audience.',
     bgColor: 'bg-gradient-to-br from-green-500 to-blue-600',
   },
   {
-    id: 10,
+    id: 8,
     icon: <FaChartPie className="text-white text-5xl mb-4" />,
     title: 'Market Research',
     description: 'Conducting thorough research to understand market trends and customer behavior.',
     bgColor: 'bg-gradient-to-br from-yellow-500 to-orange-600',
   },
   {
-    id: 11,
-    icon: <FaComments className="text-white text-5xl mb-4" />,
-    title: 'Customer Support',
-    description: 'Providing exceptional support to enhance customer satisfaction.',
-    bgColor: 'bg-gradient-to-br from-blue-600 to-indigo-700',
-  },
-  {
-    id: 12,
+    id: 9,
     icon: <FaHandsHelping className="text-white text-5xl mb-4" />,
-    title: 'Consulting Services',
-    description: 'Offering expert advice to help you achieve your business goals.',
-    bgColor: 'bg-gradient-to-br from-red-400 to-teal-600',
+    title: 'AI Chatbot',
+    description: 'Developing intelligent chatbots that enhance customer interactions and automate responses.',
+    bgColor: 'bg-gradient-to-br from-purple-600 to-pink-600',
   },
   {
-    id: 13,
+    id: 10,
     icon: <FaCog className="text-white text-5xl mb-4" />,
-    title: 'Technical Support',
-    description: 'Assisting with technical issues to ensure smooth operations.',
+    title: 'AI-based Software Development',
+    description: 'Creating software solutions powered by AI to optimize processes and enhance efficiency.',
     bgColor: 'bg-gradient-to-br from-green-400 to-yellow-500',
   },
   {
-    id: 14,
-    icon: <FaTools className="text-white text-5xl mb-4" />,
-    title: 'Software Maintenance',
-    description: 'Regular updates and fixes to keep your software running efficiently.',
-    bgColor: 'bg-gradient-to-br from-purple-400 to-indigo-500',
-  },
-  {
-    id: 15,
+    id: 11,
     icon: <FaSignInAlt className="text-white text-5xl mb-4" />,
     title: 'E-commerce Development',
     description: 'Building online stores with secure payment systems and user-friendly interfaces.',
     bgColor: 'bg-gradient-to-br from-orange-400 to-red-500',
   },
   {
-    id: 16,
+    id: 12,
     icon: <FaClipboardList className="text-white text-5xl mb-4" />,
     title: 'Lead Generation',
     description: 'Creating strategies to attract and convert potential customers.',
     bgColor: 'bg-gradient-to-br from-teal-400 to-blue-500',
-  },
-  {
-    id: 17,
-    icon: <FaMoneyBillAlt className="text-white text-5xl mb-4" />,
-    title: 'Financial Consulting',
-    description: 'Advising on financial strategies to optimize business profitability.',
-    bgColor: 'bg-gradient-to-br from-green-500 to-yellow-600',
   },
 ];
 

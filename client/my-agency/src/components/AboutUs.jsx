@@ -1,46 +1,95 @@
 import React from 'react';
-import { FaUserTie, FaLaptopCode, FaBullhorn } from 'react-icons/fa';
+import { FaBullseye, FaLightbulb, FaHistory, FaHandsHelping, FaStar, FaUserFriends } from 'react-icons/fa';
+import { GiAchievement, GiRocket } from 'react-icons/gi'; // Changed GiInnovation to GiRocket
+import { MdBusiness } from 'react-icons/md';
 
 const AboutUs = () => {
   return (
-    <div className="p-10 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-lg shadow-lg">
-      <h2 className="text-5xl font-extrabold text-center mb-10 tracking-wide">
-        About Us
-      </h2>
-
-      <p className="text-xl text-center mb-8 max-w-4xl mx-auto leading-relaxed">
-        We are a passionate team committed to delivering top-quality services and innovative solutions to help our clients succeed. With expertise across technology, marketing, and leadership, we focus on creating lasting success for businesses.
+    <section className="py-16 bg-gray-50 text-center">
+      <h2 className="text-4xl font-bold mb-8 text-gray-900">About Us</h2>
+      <p className="text-lg mb-12 text-gray-700 max-w-2xl mx-auto">
+        At [Your Company Name], we are passionate about delivering innovative solutions that empower businesses and drive growth. Our dedicated team of professionals works tirelessly to transform ideas into reality.
       </p>
 
-      <div className="flex flex-col md:flex-row justify-around gap-8">
-        {/* CEO Section */}
-        <div className="flex items-center space-x-4 bg-white text-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-          <FaUserTie className="text-5xl text-indigo-600" />
-          <div>
-            <h3 className="text-2xl font-semibold">John Doe</h3>
-            <p className="text-sm">CEO - Over 10 years of leadership experience driving innovation and success.</p>
-          </div>
+      <div className="flex flex-col md:flex-row justify-center items-center gap-8 max-w-6xl mx-auto px-4">
+
+        {/* Mission Card */}
+        <div className="bg-gradient-to-r from-green-400 to-blue-500 shadow-2xl rounded-lg p-8 transition-transform transform hover:scale-105 hover:shadow-2xl flex flex-col items-center">
+          <FaBullseye className="text-5xl mb-4 text-white" />
+          <h3 className="text-3xl font-semibold mb-4 text-white">Our Mission</h3>
+          <p className="text-lg text-white">
+            Our mission is to empower businesses with cutting-edge technology solutions that drive growth and success. We strive to create value for our clients through innovative thinking and a commitment to excellence.
+          </p>
         </div>
 
-        {/* CTO Section */}
-        <div className="flex items-center space-x-4 bg-white text-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-          <FaLaptopCode className="text-5xl text-blue-600" />
-          <div>
-            <h3 className="text-2xl font-semibold">Jane Smith</h3>
-            <p className="text-sm">CTO - Expert in software development and cloud technologies.</p>
-          </div>
+        {/* Vision Card */}
+        <div className="bg-gradient-to-r from-purple-500 to-pink-500 shadow-2xl rounded-lg p-8 transition-transform transform hover:scale-105 hover:shadow-2xl flex flex-col items-center">
+          <FaLightbulb className="text-5xl mb-4 text-white" />
+          <h3 className="text-3xl font-semibold mb-4 text-white">Our Vision</h3>
+          <p className="text-lg text-white">
+            Our vision is to be the leading provider of technology solutions that inspire innovation and transform industries. We envision a future where our solutions enhance the efficiency and effectiveness of businesses worldwide.
+          </p>
         </div>
+      </div>
 
-        {/* Marketing Director Section */}
-        <div className="flex items-center space-x-4 bg-white text-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-          <FaBullhorn className="text-5xl text-pink-600" />
-          <div>
-            <h3 className="text-2xl font-semibold">Emily Johnson</h3>
-            <p className="text-sm">Marketing Director - Focuses on brand growth and customer engagement.</p>
+      {/* Company History Section */}
+      <div className="mt-12 max-w-6xl mx-auto px-4">
+        <h3 className="text-3xl font-semibold mb-4 text-gray-900">Our History</h3>
+        <div className="flex flex-col md:flex-row justify-between gap-8">
+          <div className="bg-gradient-to-r from-orange-400 to-yellow-500 shadow-2xl rounded-lg p-8 transition-transform transform hover:scale-105 hover:shadow-2xl flex flex-col items-center">
+            <GiAchievement className="text-5xl mb-4 text-white" />
+            <p className="text-lg text-white text-center">
+              Founded in [Year], [Your Company Name] started with a simple mission: to make technology accessible and beneficial for businesses of all sizes. Over the years, we have evolved into a trusted partner for organizations across various sectors, providing innovative solutions that drive success.
+            </p>
+          </div>
+          <div className="bg-gradient-to-r from-yellow-500 to-red-500 shadow-2xl rounded-lg p-8 transition-transform transform hover:scale-105 hover:shadow-2xl flex flex-col items-center">
+            <FaHistory className="text-5xl mb-4 text-white" />
+            <p className="text-lg text-white text-center">
+              Our journey has been marked by continuous growth, learning, and adaptation. With each challenge, we have forged deeper connections with our clients and adapted our strategies to meet their evolving needs.
+            </p>
           </div>
         </div>
       </div>
-    </div>
+
+      {/* Company Values Section */}
+      <div className="mt-12 max-w-6xl mx-auto px-4">
+        <h3 className="text-3xl font-semibold mb-4 text-gray-900">Our Values</h3>
+        <div className="flex flex-col md:flex-row justify-between gap-8">
+          <div className="bg-gradient-to-r from-indigo-500 to-blue-600 shadow-2xl rounded-lg p-8 transition-transform transform hover:scale-105 hover:shadow-2xl flex flex-col items-center">
+            <FaHandsHelping className="text-5xl mb-4 text-white" />
+            <p className="text-lg text-white text-center">
+              <strong>Integrity:</strong> We uphold the highest standards of honesty and transparency in our interactions.
+            </p>
+          </div>
+          <div className="bg-gradient-to-r from-blue-600 to-purple-500 shadow-2xl rounded-lg p-8 transition-transform transform hover:scale-105 hover:shadow-2xl flex flex-col items-center">
+            <FaStar className="text-5xl mb-4 text-white" />
+            <p className="text-lg text-white text-center">
+              <strong>Excellence:</strong> We are committed to delivering the highest quality in every project we undertake.
+            </p>
+          </div>
+          <div className="bg-gradient-to-r from-purple-500 to-pink-500 shadow-2xl rounded-lg p-8 transition-transform transform hover:scale-105 hover:shadow-2xl flex flex-col items-center">
+            <MdBusiness className="text-5xl mb-4 text-white" />
+            <p className="text-lg text-white text-center">
+              <strong>Collaboration:</strong> We believe in the power of teamwork and working together to achieve common goals.
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-col md:flex-row justify-between gap-8 mt-4">
+          <div className="bg-gradient-to-r from-pink-500 to-red-500 shadow-2xl rounded-lg p-8 transition-transform transform hover:scale-105 hover:shadow-2xl flex flex-col items-center">
+            <GiRocket className="text-5xl mb-4 text-white" />
+            <p className="text-lg text-white text-center">
+              <strong>Customer Focus:</strong> Our clients are at the heart of everything we do, and we strive to exceed their expectations.
+            </p>
+          </div>
+          <div className="bg-gradient-to-r from-red-500 to-orange-400 shadow-2xl rounded-lg p-8 transition-transform transform hover:scale-105 hover:shadow-2xl flex flex-col items-center">
+            <FaUserFriends className="text-5xl mb-4 text-white" />
+            <p className="text-lg text-white text-center">
+              <strong>Innovation:</strong> We embrace change and continuously seek new ways to improve our solutions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
