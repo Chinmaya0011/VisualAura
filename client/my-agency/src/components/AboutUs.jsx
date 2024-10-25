@@ -1,12 +1,45 @@
 import React from 'react';
+import { FaUserTie, FaLaptopCode, FaBullhorn } from 'react-icons/fa';
 
 const AboutUs = () => {
   return (
-    <div className="p-8 bg-gradient-to-r from-blue-300 to-indigo-300">
-      <h2 className="text-4xl font-extrabold text-center text-white mb-8">About Us</h2>
-      <p className="text-lg text-gray-800 mb-6 text-center">
-        We are a passionate team dedicated to providing top-quality services that help our clients achieve their goals. With a deep commitment to innovation and customer success, we bring a wealth of industry expertise and a focus on technology-driven solutions. Our CEO, John Doe, leads the charge with over a decade of experience, while CTO Jane Smith specializes in cutting-edge software and cloud technologies. Emily Johnson, our Marketing Director, ensures strong brand growth and engagement. Together, we aim to empower businesses with solutions that drive lasting success and meaningful partnerships.
+    <div className="p-10 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-lg shadow-lg">
+      <h2 className="text-5xl font-extrabold text-center mb-10 tracking-wide">
+        About Us
+      </h2>
+
+      <p className="text-xl text-center mb-8 max-w-4xl mx-auto leading-relaxed">
+        We are a passionate team committed to delivering top-quality services and innovative solutions to help our clients succeed. With expertise across technology, marketing, and leadership, we focus on creating lasting success for businesses.
       </p>
+
+      <div className="flex flex-col md:flex-row justify-around gap-8">
+        {/* CEO Section */}
+        <div className="flex items-center space-x-4 bg-white text-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <FaUserTie className="text-5xl text-indigo-600" />
+          <div>
+            <h3 className="text-2xl font-semibold">John Doe</h3>
+            <p className="text-sm">CEO - Over 10 years of leadership experience driving innovation and success.</p>
+          </div>
+        </div>
+
+        {/* CTO Section */}
+        <div className="flex items-center space-x-4 bg-white text-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <FaLaptopCode className="text-5xl text-blue-600" />
+          <div>
+            <h3 className="text-2xl font-semibold">Jane Smith</h3>
+            <p className="text-sm">CTO - Expert in software development and cloud technologies.</p>
+          </div>
+        </div>
+
+        {/* Marketing Director Section */}
+        <div className="flex items-center space-x-4 bg-white text-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <FaBullhorn className="text-5xl text-pink-600" />
+          <div>
+            <h3 className="text-2xl font-semibold">Emily Johnson</h3>
+            <p className="text-sm">Marketing Director - Focuses on brand growth and customer engagement.</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

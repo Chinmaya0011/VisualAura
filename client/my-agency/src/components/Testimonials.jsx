@@ -40,12 +40,13 @@ const testimonials = [
 
 // Background colors for each testimonial
 const bgColors = [
-  "bg-blue-100",
-  "bg-pink-100",
-  "bg-green-100",
-  "bg-yellow-100",
-  "bg-purple-100",
+  "bg-blue-50 bg-opacity-0",
+  "bg-pink-50 bg-opacity-0",
+  "bg-green-50 bg-opacity-0",
+  "bg-yellow-50 bg-opacity-0",
+  "bg-purple-50 bg-opacity-0",
 ];
+
 
 // Function to truncate feedback text
 const truncateText = (text, wordLimit) => {
@@ -63,15 +64,15 @@ const Testimonials = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
     centerMode: true,
-    centerPadding: '30px',
+    centerPadding: '20px',
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          centerPadding: '20px',
-        }
+          centerPadding: '15px',
+        },
       },
       {
         breakpoint: 600,
@@ -79,37 +80,37 @@ const Testimonials = () => {
           slidesToShow: 1,
           slidesToScroll: 1,
           centerPadding: '10px',
-        }
-      }
-    ]
+        },
+      },
+    ],
   };
 
   return (
-    <section className="py-10 bg-gray-100 px-4 md:px-10 lg:px-20">
-      <h2 className="text-4xl font-bold text-center mb-6">What Our Clients Say</h2>
+    <section className="py-12 bg-gray-100 px-6 md:px-12 lg:px-24">
+      <h2 className="text-4xl font-bold text-center mb-8">What Our Clients Say</h2>
       <div className="overflow-hidden">
         <Slider {...settings}>
           {testimonials.map((client, index) => (
-            <div
-              key={index}
-              className={`shadow-lg rounded-lg ${bgColors[index % bgColors.length]} transform transition-transform hover:scale-105 mx-2`}
-              style={{ 
-                width: '300px',  // Set fixed width
-                height: '400px', // Set fixed height
-                display: 'flex',  // Use flexbox
-                flexDirection: 'column',  // Stack children vertically
-                justifyContent: 'space-between',  // Distribute space
-              }}
-            >
-              <div className="bg-white p-4 rounded-lg shadow-inner h-full flex flex-col justify-between">
-                <div className="flex justify-center mb-4">
-                  <FaRegUser className="text-gray-600 w-20 h-20 rounded-full bg-gray-200 p-3" />
-                </div>
-                <h3 className="text-xl font-semibold mt-4 text-center">{client.name}</h3>
-                <p className="text-sm text-gray-500 text-center">{client.role}</p>
-                <p className="mt-4 text-center italic">"{truncateText(client.feedback, 12)}"</p> {/* Truncate feedback to 20 words */}
-              </div>
-            </div>
+           <div
+           key={index}
+           className={`shadow-md rounded-md ${bgColors[index % bgColors.length]} mx-4 my-4 p-2 `}
+           style={{
+             width: '260px',   // Fixed width for the card
+             height: '360px',  // Fixed height for the card
+             display: 'flex',
+             flexDirection: 'column',
+             justifyContent: 'space-between',
+           }}
+         >
+           <div className="flex flex-col items-center gap-2 m-1 p-2">
+             <FaRegUser className="text-gray-500 w-16 h-16 rounded-full bg-gray-300 p-2" />
+             <h3 className="text-md font-semibold">{client.name}</h3>
+             <p className="text-sm text-gray-600">{client.role}</p>
+           </div>
+           
+           <p className="mt-4 text-center italic">"{truncateText(client.feedback, 12)}"</p>
+         </div>
+         
           ))}
         </Slider>
       </div>

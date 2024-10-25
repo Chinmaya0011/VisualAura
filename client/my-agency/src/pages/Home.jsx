@@ -8,7 +8,7 @@ import Testimonials from '../components/Testimonials';
 import OurTeam from '../components/OurTeam';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
-
+import Contact from '../components/Contact';
 const Home = () => (
   <>
     <Navbar />
@@ -20,6 +20,7 @@ const Home = () => (
     <Testimonials />
     <OurTeam />
     <CTA />
+    <Contact/>
     <Footer />
   </>
 );
