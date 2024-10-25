@@ -1,63 +1,66 @@
-import React from 'react';
-import { FaReact } from 'react-icons/fa';
-import { FaNodeJs } from 'react-icons/fa';
-import { FaAws } from 'react-icons/fa';
-import { FaHtml5 } from 'react-icons/fa';
-import { FaCss3Alt } from 'react-icons/fa';
-import { FaJs } from 'react-icons/fa';
-import { SiMongodb } from 'react-icons/si';
-import { SiExpress } from 'react-icons/si';
-import { SiTailwindcss } from 'react-icons/si';
-import { SiVite } from 'react-icons/si';
-import { SiFirebase } from 'react-icons/si';
-import { SiGoogleanalytics } from 'react-icons/si';
-import { GrWordpress } from 'react-icons/gr'; // WordPress icon
-import { DiJqueryLogo } from 'react-icons/di'; // jQuery icon
-import { SiRedux } from 'react-icons/si'; // Redux icon
-import { SiNextdotjs } from 'react-icons/si'; // Next.js icon
-import { SiTypescript } from 'react-icons/si'; // TypeScript icon
-import { SiDjango } from 'react-icons/si'; // Django icon
-import { SiPostgresql } from 'react-icons/si'; // PostgreSQL icon
-import { SiFlutter } from 'react-icons/si'; // Flutter icon
-import { DiRuby } from 'react-icons/di'; // Ruby icon
-import { DiPhp } from 'react-icons/di'; // PHP icon
+import React, { useState } from 'react';
+import { FaReact, FaNodeJs, FaAws, FaHtml5, FaCss3Alt, FaJs } from 'react-icons/fa';
+import { SiMongodb, SiExpress, SiTailwindcss, SiVite, SiFirebase, SiGoogleanalytics, SiRedux, SiNextdotjs, SiTypescript, SiDjango, SiPostgresql, SiFlutter } from 'react-icons/si';
+import { GrWordpress } from 'react-icons/gr';
+import { DiJqueryLogo, DiRuby, DiPhp } from 'react-icons/di';
 
 const technologies = [
-  { icon: <FaReact className="text-blue-600" /> },
-  { icon: <FaNodeJs className="text-green-600" /> },
-  { icon: <SiExpress className="text: #000000" /> },
-  { icon: <SiVite className="text-orange-600" /> },
-  { icon: <SiTailwindcss className="text-cyan-400" /> },
-  { icon: <FaHtml5 className="text-orange-500" /> },
-  { icon: <FaCss3Alt className="text-blue-500" /> },
-  { icon: <FaJs className="text-yellow-500" /> },
-  { icon: <GrWordpress className="text-blue-800" /> }, // WordPress icon
-  { icon: <DiJqueryLogo className="text-blue-600" /> }, // jQuery icon
-  { icon: <SiRedux className="text-purple-600" /> }, // Redux icon
-  { icon: <SiNextdotjs className="text-black" /> }, // Next.js icon
-  { icon: <SiTypescript className="text-blue-600" /> }, // TypeScript icon
-  { icon: <SiFirebase className="text-yellow-500" /> },
-  { icon: <FaAws className="text-orange-600" /> },
-  { icon: <SiGoogleanalytics className="text-green-500" /> },
-  { icon: <SiDjango className="text-green-700" /> }, // Django icon
-  { icon: <SiPostgresql className="text-blue-600" /> }, // PostgreSQL icon
-  { icon: <SiFlutter className="text-blue-400" /> }, // Flutter icon
-  { icon: <DiRuby className="text-red-600" /> }, // Ruby icon
-  { icon: <DiPhp className="text-blue-700" /> }, // PHP icon
+  { icon: <FaReact className="text-blue-600" />, name: 'React' },
+  { icon: <FaNodeJs className="text-green-600" />, name: 'Node.js' },
+  { icon: <SiExpress className="text-black" />, name: 'Express' },
+  { icon: <SiVite className="text-orange-500" />, name: 'Vite' },
+  { icon: <SiTailwindcss className="text-cyan-400" />, name: 'TailwindCSS' },
+  { icon: <FaHtml5 className="text-orange-500" />, name: 'HTML5' },
+  { icon: <FaCss3Alt className="text-blue-500" />, name: 'CSS3' },
+  { icon: <FaJs className="text-yellow-400" />, name: 'JavaScript' },
+  { icon: <GrWordpress className="text-blue-800" />, name: 'WordPress' },
+  { icon: <DiJqueryLogo className="text-blue-500" />, name: 'jQuery' },
+  { icon: <SiRedux className="text-purple-600" />, name: 'Redux' },
+  { icon: <SiNextdotjs className="text-black" />, name: 'Next.js' },
+  { icon: <SiTypescript className="text-blue-600" />, name: 'TypeScript' },
+  { icon: <SiFirebase className="text-yellow-500" />, name: 'Firebase' },
+  { icon: <FaAws className="text-orange-600" />, name: 'AWS' },
+  { icon: <SiGoogleanalytics className="text-green-500" />, name: 'Google Analytics' },
+  { icon: <SiDjango className="text-green-700" />, name: 'Django' },
+  { icon: <SiPostgresql className="text-blue-600" />, name: 'PostgreSQL' },
+  { icon: <SiFlutter className="text-blue-400" />, name: 'Flutter' },
+  { icon: <DiRuby className="text-red-600" />, name: 'Ruby' },
+  { icon: <DiPhp className="text-blue-700" />, name: 'PHP' },
 ];
 
 const TechnologiesUsed = () => {
+  const [showAll, setShowAll] = useState(false); // State to manage visibility
+
+  // Function to toggle between showing 12 and all technologies
+  const toggleShowAll = () => setShowAll(!showAll);
+
   return (
-    <div className="py-16 px-6 bg-gray-100">
-      <h2 className="text-4xl font-bold text-center mb-10 text-gray-800">Technologies We Use</h2>
-      <div className="flex flex-wrap justify-center gap-8">
-        {technologies.map((item, index) => (
-          <div key={index} className="flex justify-center items-center h-12 w-12 lg:h-32 lg:w-32 bg-white rounded-full shadow-lg transition-transform transform hover:scale-110 p-4">
-            <div className="text-3xl lg:text-5xl">
-              {item.icon}
-            </div>
+    <div className="py-12 px-6 bg-gray-50">
+      <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">
+        Technologies We Use
+      </h2>
+
+      {/* Grid of technologies */}
+      <div className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-4 gap-2">
+        {(showAll ? technologies : technologies.slice(0, 12)).map((item, index) => (
+          <div
+            key={index}
+            className="bg-white shadow-md rounded-lg p-4 flex flex-col items-center hover:shadow-lg transition-shadow"
+          >
+            <div className="text-4xl mb-2">{item.icon}</div>
+            <h3 className="text-base font-medium text-gray-700">{item.name}</h3>
           </div>
         ))}
+      </div>
+
+      {/* Show More / Show Less button */}
+      <div className="text-center mt-6">
+        <button
+          onClick={toggleShowAll}
+          className="px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition"
+        >
+          {showAll ? 'Show Less' : 'Show More'}
+        </button>
       </div>
     </div>
   );

@@ -53,8 +53,8 @@ const projectsData = [
 
 const Portfolio = () => {
   return (
-    <div className="p-8 bg-gradient-to-r">
-      <h2 className="text-4xl font-extrabold text-center text-black-500 mb-12">
+    <div className="p-8 bg-gradient-to-r from-gray-100 to-gray-200">
+      <h2 className="text-4xl font-extrabold text-center text-black mb-12">
         My Portfolio
       </h2>
       <div className="flex overflow-x-auto hide-scrollbar">

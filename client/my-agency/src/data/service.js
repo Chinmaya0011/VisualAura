@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { FaCode, FaSearch, FaBullhorn, FaMobileAlt, FaUsers, FaChartLine, FaCloud, FaFileAlt, FaChartPie, FaComments, FaHandsHelping, FaCog, FaTools, FaSignInAlt, FaClipboardList, FaMoneyBillAlt, FaAngleDown, FaAngleUp } from 'react-icons/fa';
-const servicesData = [
+import { FaCode, FaSearch, FaBullhorn, FaMobileAlt, FaUsers, FaChartLine, FaFileAlt, FaChartPie, FaHandsHelping, FaCog, FaSignInAlt, FaClipboardList } from 'react-icons/fa';
+
+export const servicesData = [
   {
     id: 1,
     icon: <FaCode className="text-white text-5xl mb-4" />,
@@ -86,49 +86,3 @@ const servicesData = [
     bgColor: 'bg-gradient-to-br from-teal-500 to-blue-600',
   },
 ];
-
-const Services = () => {
-  const [showAll, setShowAll] = useState(false);
-
-  const toggleShowAll = () => {
-    setShowAll(!showAll);
-  };
-
-  return (
-    <div className="bg-gray-50 p-10">
-      <h2 className="text-4xl font-bold text-center mb-8 text-gray-800 font-serif">Our Services</h2>
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {servicesData.slice(0, showAll ? servicesData.length : 8).map((service) => (
-          <div
-            key={service.id}
-            className={`rounded-lg border border-gray-300 p-6 text-center transform transition-transform duration-300 hover:scale-105 hover:shadow-xl shadow-md ${service.bgColor} text-gray-100`}
-          >
-            <div className="rounded-full p-4 inline-block mb-4 bg-white bg-opacity-30 shadow-lg">
-              {service.icon}
-            </div>
-            <h3 className="text-2xl font-semibold mb-2">{service.title}</h3>
-            <p className="text-sm">{service.description}</p>
-          </div>
-        ))}
-      </div>
-      <div className="flex justify-center mt-6">
-        <button
-          onClick={toggleShowAll}
-          className="bg-blue-600 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition duration-300 flex items-center justify-center"
-        >
-          {showAll ? (
-            <>
-              <FaAngleUp className="mr-2" /> Show Less
-            </>
-          ) : (
-            <>
-              <FaAngleDown className="mr-2" /> Show All
-            </>
-          )}
-        </button>
-      </div>
-    </div>
-  );
-};
-
-export default Services;
