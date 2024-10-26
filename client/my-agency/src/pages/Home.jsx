@@ -12,6 +12,7 @@ import Contact from '../components/Contact';
 import Pricing from '../components/Pricing';
 import TeamMetrics from '../components/metricsData';
 import NotificationBar from '../components/NotificationBar';
+import WhatsAppIcon from '../components/WhatsAppIcon'; // Import the WhatsApp icon
 
 // Lazy-loaded components for better performance
 const Portfolio = lazy(() => import('../components/Portfolio'));
@@ -68,6 +69,9 @@ const Home = () => {
         {/* Contact Form and Footer */}
         <Contact />
         <Footer />
+
+        {/* WhatsApp Icon */}
+        <WhatsAppIcon /> {/* Add the WhatsApp icon here */}
       </div>
     </>
   );

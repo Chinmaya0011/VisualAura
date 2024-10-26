@@ -1,0 +1,58 @@
+/* src/components/WhatsAppIcon.css */
+
+.whatsapp-icon {
+    position: fixed;
+    bottom: 20px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    display: flex; /* Align items in a column */
+    flex-direction: column; /* Stack the icon and text vertically */
+    align-items: center; /* Center items horizontally */
+    z-index: 1000; /* Ensure it's on top */
+    animation: vibrateWithPause 2s infinite; /* Vibrate every 2 seconds */
+    cursor: pointer; /* Change cursor on hover */
+  }
+  
+  .whatsapp-icon-container {
+    width: 60px; /* Increased size for better visibility */
+    height: 60px; /* Increased size for better visibility */
+    background-color: #25D366; /* Background color for the icon */
+    border-radius: 50%; /* Circular shape for the icon */
+    display: flex; /* Align icon in center */
+    align-items: center; /* Center icon vertically */
+    justify-content: center; /* Center icon horizontally */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow for 3D effect */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transition for hover effects */
+  }
+  
+  /* Style for the icon */
+  .whatsapp-icon-container svg {
+    width: 28px; /* Size of the icon */
+    height: 28px; /* Size of the icon */
+    color: white; /* Icon color */
+  }
+  
+  /* Style for the text */
+  .whatsapp-text {
+    margin-top: 8px; /* Space between icon and text */
+    font-size: 14px; /* Font size for the text */
+    color: rgb(56, 57, 49); /* Text color */
+    text-align: center; /* Center align text */
+    font-weight: bold; /* Bold text for emphasis */
+  }
+  
+  /* Hover effect for modern design */
+  .whatsapp-icon:hover .whatsapp-icon-container {
+    transform: translateY(-5px) scale(1.1); /* Move upwards and scale slightly */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); /* Increase shadow on hover */
+  }
+  
+  /* Smooth vibrate animation */
+  @keyframes vibrateWithPause {
+    0%, 100% { transform: translate(0); }
+    10% { transform: translate(-2px, -2px); }
+    20% { transform: translate(2px, 2px); }
+    30% { transform: translate(-2px, 2px); }
+    40% { transform: translate(2px, -2px); }
+    50% { transform: translate(0); }
+  }
+  
