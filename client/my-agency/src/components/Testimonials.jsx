@@ -38,16 +38,7 @@ const testimonials = [
   },
 ];
 
-// Background colors for each testimonial
-const bgColors = [
-  "bg-blue-100",
-  "bg-pink-100",
-  "bg-green-100",
-  "bg-yellow-100",
-  "bg-purple-100",
-];
-
-// Truncate feedback text to avoid overflow
+// Truncate feedback text after a certain number of words
 const truncateText = (text, wordLimit) => {
   const words = text.split(' ');
   return words.length > wordLimit ? `${words.slice(0, wordLimit).join(' ')}...` : text;
@@ -85,37 +76,26 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="py-12 px-6 md:px-12 lg:px-24 bg-gradient-to-br from-gray-50 via-white to-gray-100">
-      <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-10 text-gray-800">
-        What Our Clients Say
-      </h2>
-      <div className="overflow-hidden">
+    <section className="py-12 px-6 md:px-12 lg:px-24 bg-white">
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10">What Our Clients Say</h2>
+      <div className="testimonials-container max-w-screen-xl mx-auto px-4">
         <Slider {...settings}>
           {testimonials.map((client, index) => (
-            <div
-              key={index}
-              className={`relative rounded-lg p-4 shadow-md transform transition-all hover:scale-105 ${bgColors[index % bgColors.length]} mx-2 my-2`}
-              style={{
-                width: '200px',  // Reduced width size
-                height: '300px',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                margin: '0 10px',
-              }}
-            >
-              <div className="flex flex-col items-center">
-                <FaRegUser className="text-gray-600 w-12 h-12 rounded-full bg-gray-200 p-2 mb-3 shadow-sm" />
-                <h3 className="text-lg font-semibold text-gray-800">{client.name}</h3>
-                <p className="text-sm text-gray-500">{client.role}</p>
-              </div>
-              <p className="mt-4 text-center text-gray-700 italic">
-                "{truncateText(client.feedback, 12)}"
-              </p>
+            <div key={index} className="flex justify-center items-center mx-2 my-4">
               <div
-                className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-300 to-purple-400 opacity-0 hover:opacity-100 blur-md transition-all duration-300"
-                style={{ zIndex: -1 }}
-              />
+                className="flex flex-col items-center text-center p-6 bg-white rounded-lg  overflow-hidden"
+                style={{
+                  // Remove fixed width and height for better responsiveness
+                }}
+              >
+                <FaRegUser className="text-blue-500 text-4xl mb-4" />
+                <h3 className="text-lg font-semibold text-gray-900">{client.name}</h3>
+                <p className="text-sm text-gray-600 mb-4">{client.role}</p>
+                {/* Truncated feedback text with overflow handling */}
+                <p className="text-gray-700 italic line-clamp-3 overflow-hidden text-sm px-3">
+                  {truncateText(client.feedback, 10)}
+                </p>
+              </div>
             </div>
           ))}
         </Slider>

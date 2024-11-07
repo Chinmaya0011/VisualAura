@@ -23,7 +23,7 @@ const teamMembers = [
 
 const OurTeam = () => {
   return (
-    <section className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-20 px-8">
+    <section className="py-20 px-8 bg-gradient-to-r from-indigo-800 via-purple-600 to-pink-500">
       <h2 className="text-5xl font-extrabold text-center text-white mb-16 tracking-wide drop-shadow-lg">
         Meet Our Team
       </h2>
@@ -32,16 +32,16 @@ const OurTeam = () => {
         {teamMembers.map((member, index) => (
           <div
             key={index}
-            className="max-w-xs p-8 bg-white bg-opacity-80 backdrop-blur-lg rounded-3xl shadow-lg transform hover:scale-105 hover:shadow-2xl transition-all duration-300 hover:bg-opacity-100"
+            className="max-w-xs p-8 bg-white bg-opacity-90 backdrop-blur-lg rounded-3xl shadow-lg transform hover:scale-105 hover:shadow-2xl transition-all duration-300 hover:bg-opacity-100"
           >
             {/* Profile Image */}
             <div className="relative w-32 h-32 mx-auto mb-6">
               <img
                 src={member.imageUrl}
                 alt={member.name}
-                className="w-full h-full object-cover rounded-full border-4 border-indigo-400 shadow-md"
+                className="w-full h-full object-cover rounded-full border-4 border-indigo-400 shadow-xl"
               />
-              <div className="absolute bottom-0 right-0 w-6 h-6 bg-green-400 rounded-full border-2 border-white shadow-sm"></div>
+              <div className="absolute bottom-0 right-0 w-6 h-6 bg-green-500 rounded-full border-2 border-white shadow-md"></div>
             </div>
 
             {/* Member Name */}
@@ -55,12 +55,10 @@ const OurTeam = () => {
             </p>
 
             {/* Description */}
-            <p className="text-center text-gray-700 mt-4 leading-relaxed">
-              {member.description}
-            </p>
+            <p className="text-center text-gray-700 mt-4 leading-relaxed">{member.description}</p>
 
             {/* Social Links */}
-            <div className="flex justify-center gap-4 mt-6">
+            <div className="flex justify-center gap-6 mt-6">
               <a
                 href="#"
                 className="text-blue-500 hover:text-blue-700 transition duration-300"

@@ -160,7 +160,7 @@ const Pricing = () => {
     },
   ];
   return (
-    <section className="py-24 bg-gradient-to-r from-indigo-100 via-blue-50 to-blue-100 text-center">
+    <section className="py-24 text-center">
       <h2 className="text-5xl font-extrabold mb-16 text-gray-800 tracking-wider uppercase">
         Our Pricing Plans
       </h2>
