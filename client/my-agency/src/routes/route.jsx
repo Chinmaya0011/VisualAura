@@ -9,6 +9,7 @@ import Portfolio from '../pages/Portfolio'; // Create this component if not exis
 import Contact from '../pages/Contact'; // Create this component if not existing
 import NotFound from '../pages/NotFound'; // Create a NotFound component for 404 errors
 import FreeQuotePage from '../pages/FreeQuotePage';
+import Blogs from '../pages/Blogs';
 const AppRoutes = () => {
   return (
     <Router>
@@ -19,6 +20,8 @@ const AppRoutes = () => {
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/freeQuote" element={<FreeQuotePage />} />
+        <Route path="/blog" element={<Blogs />} />
+
         <Route path="*" element={<NotFound />} /> {/* Catch-all route for 404 */}
       </Routes>
     </Router>
