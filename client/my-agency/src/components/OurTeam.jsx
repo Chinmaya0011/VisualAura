@@ -23,8 +23,8 @@ const teamMembers = [
 
 const OurTeam = () => {
   return (
-    <section className="py-20 px-8 bg-gradient-to-r from-indigo-800 via-purple-600 to-pink-500">
-      <h2 className="text-5xl font-extrabold text-center text-white mb-16 tracking-wide drop-shadow-lg">
+    <section className="py-20 px-8 bg-white">
+      <h2 className="text-3xl font-bold text-center text-gray-900 mb-16">
         Meet Our Team
       </h2>
 
@@ -32,30 +32,35 @@ const OurTeam = () => {
         {teamMembers.map((member, index) => (
           <div
             key={index}
-            className="max-w-xs p-8 bg-white bg-opacity-90 backdrop-blur-lg rounded-3xl shadow-lg transform hover:scale-105 hover:shadow-2xl transition-all duration-300 hover:bg-opacity-100"
+            className="max-w-xs p-6 bg-white border border-gray-200 rounded-lg shadow-xl transform hover:scale-105 hover:rotate-3d transition-all duration-500 hover:shadow-2xl hover:bg-opacity-90"
+            style={{
+              background: 'rgba(255, 255, 255, 0.8)',
+              backdropFilter: 'blur(10px)',
+              transformStyle: 'preserve-3d',
+              perspective: '1000px',
+            }}
           >
             {/* Profile Image */}
             <div className="relative w-32 h-32 mx-auto mb-6">
               <img
                 src={member.imageUrl}
                 alt={member.name}
-                className="w-full h-full object-cover rounded-full border-4 border-indigo-400 shadow-xl"
+                className="w-full h-full object-cover rounded-full border-4 border-gray-300 shadow-xl transform transition-all duration-300"
               />
-              <div className="absolute bottom-0 right-0 w-6 h-6 bg-green-500 rounded-full border-2 border-white shadow-md"></div>
             </div>
 
             {/* Member Name */}
-            <h3 className="text-2xl font-semibold text-center text-gray-900 mt-2 tracking-wide">
+            <h3 className="text-xl font-semibold text-center text-gray-900 mt-2">
               {member.name}
             </h3>
 
             {/* Member Role */}
-            <p className="text-center text-indigo-600 font-medium text-lg mt-1">
+            <p className="text-center text-gray-600 text-lg mt-1">
               {member.role}
             </p>
 
             {/* Description */}
-            <p className="text-center text-gray-700 mt-4 leading-relaxed">{member.description}</p>
+            <p className="text-center text-gray-500 mt-4">{member.description}</p>
 
             {/* Social Links */}
             <div className="flex justify-center gap-6 mt-6">

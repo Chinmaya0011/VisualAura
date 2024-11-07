@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaEnvelope } from 'react-icons/fa';
 import heroImage from '../assets/heroimg.jpg'; // High-resolution hero image.
-
+import { Link } from 'react-router-dom';
 const Hero = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
@@ -35,12 +35,12 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-            <a
-              href="#"
+            <Link
+              to="freequote"
               className="px-6 py-2 text-lg font-semibold text-white bg-orange-500 rounded-lg shadow-xl transition-transform transform hover:scale-105 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400"
             >
               Get Started
-            </a>
+            </Link>
             <a
               href="#"
               className="px-6 py-2 text-lg font-semibold text-white bg-blue-500 rounded-lg shadow-xl transition-transform transform hover:scale-105 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
