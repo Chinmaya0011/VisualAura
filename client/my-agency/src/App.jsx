@@ -7,13 +7,10 @@ import Loading from './components/Loading';
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
+  // Simulating page loading logic without setTimeout
   useEffect(() => {
-    // Simulating loading delay; replace this with your actual loading logic
-    const timer = setTimeout(() => {
-      setIsLoading(false); // Set loading to false after the delay
-    }, 2000); // Simulating a 2-second loading time
-
-    return () => clearTimeout(timer); // Cleanup the timer
+    // You can replace this with actual logic such as fetching data, or waiting for the app to be ready
+    setIsLoading(false); // Immediately set loading to false after initial load
   }, []);
 
   // Render the loading component while loading
