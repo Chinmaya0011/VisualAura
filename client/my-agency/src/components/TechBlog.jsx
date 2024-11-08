@@ -1,67 +1,93 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { IoMdSwap } from 'react-icons/io';  // Correct import for IoMdSwap
-import blogs from '../assets/blogs.json'; // Ensure the path is correct
- // Footer component
+import { IoMdSwap } from 'react-icons/io';
+import blogs from '../assets/blogs.json';
 import LanguageToggleButton from './LanguageToggleButton';
 
-// Function to sort blogs by published date
 const sortBlogsByDate = (blogs) => {
   return blogs.sort((a, b) => new Date(b.published_date) - new Date(a.published_date));
 };
 
-const TechBlog = () => {
-  const [language, setLanguage] = useState('english'); // State to toggle language globally
+// Helper function to limit description to 10 words
+const truncateDescription = (description) => {
+  const words = description.split(' ');
+  return words.length > 20 ? words.slice(0, 20).join(' ') + '...' : description;
+};
 
-  // Function to toggle language
+const TechBlog = () => {
+  const [language, setLanguage] = useState('english');
+
   const toggleLanguage = () => {
     setLanguage((prevLanguage) => (prevLanguage === 'english' ? 'hinglish' : 'english'));
   };
 
-  // Sort blogs by date before displaying
   const sortedBlogs = sortBlogsByDate(blogs);
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col">
-
+    <div className="min-h-screen bg-gradient-to-b from-indigo-100 to-blue-50 flex flex-col">
       <div className="container mx-auto px-4 py-8 flex-grow max-w-7xl">
-        <LanguageToggleButton language={language} toggleLanguage={toggleLanguage} /> {/* Language Toggle Button */}
+        <LanguageToggleButton language={language} toggleLanguage={toggleLanguage} />
 
-        <h1 className="text-3xl font-bold text-center mb-8 text-indigo-700">
+        <h1 className="text-4xl font-bold text-center mb-12 text-indigo-800">
           All Blogs
         </h1>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {sortedBlogs.map((blog) => (
             <div
               key={blog.id}
-              className="bg-white rounded-lg shadow-lg p-6 transition-all hover:shadow-2xl hover:scale-105 transform duration-300"
+              className="p-6 relative overflow-hidden"
+              style={{
+                perspective: '1000px',
+              }}
             >
-              <h2 className="text-2xl font-semibold mb-4 text-gray-800">
-                {language === 'english' ? blog.title.english : blog.title.hinglish}
-              </h2>
-
-              <div className="text-sm text-gray-500 mb-4">
-                <span>{blog.author} | </span>
-                <span>{blog.published_date}</span>
-              </div>
-
-              <p className="text-gray-700 mb-6">
-                {language === 'english' ? blog.description.english : blog.description.hinglish}
-              </p>
-              {/* Link to individual blog page */}
-              <Link
-                to={`/blog/${blog.id}`}
-                className="text-blue-500 hover:text-blue-700 font-semibold text-lg flex items-center space-x-2 transform hover:scale-110 transition-all duration-300"
+              <div
+                className="relative"
+                style={{
+                  height: "100%",
+                  transform: 'rotateX(10deg) rotateY(-10deg)',
+                  background: 'linear-gradient(145deg, #ffffff, #e6e6e6)',
+                  borderRadius: '10px',
+                  padding: '20px',
+                  boxShadow: 'inset 5px 5px 10px #d1d1d1, inset -5px -5px 10px #ffffff',
+                }}
               >
-                <IoMdSwap className="transform rotate-90" />
-                <span>Read more</span>
-              </Link>
+                <h2 className="text-2xl font-semibold mb-4 text-indigo-900 tracking-wide">
+                  {language === 'english' ? blog.title.english : blog.title.hinglish}
+                </h2>
+
+                <div className="text-sm text-gray-600 mb-4 italic">
+                  <span className="font-semibold text-purple-600">{blog.author}</span> | 
+                  <span className="ml-1 text-gray-500">{blog.published_date}</span>
+                </div>
+
+                <p className="text-gray-800 mb-6">
+                  {truncateDescription(language === 'english' ? blog.description.english : blog.description.hinglish)}
+                </p>
+
+                <Link
+                  to={`/blog/${blog.id}`}
+                  className="text-indigo-500 hover:text-indigo-700 font-semibold text-lg flex items-center space-x-2
+                             transform transition-all duration-300"
+                >
+                  <IoMdSwap className="transform rotate-90" />
+                  <span>Read more</span>
+                </Link>
+              </div>
+              
+              {/* Mirror Reflection Effect */}
+              <div
+                className="absolute bottom-0 left-0 w-full h-full opacity-20 transform translate-y-full rotate-x-180"
+                style={{
+                  background: 'linear-gradient(145deg, #ffffff, #e6e6e6)',
+                  borderRadius: '10px',
+                  filter: 'blur(10px)',
+                }}
+              ></div>
             </div>
           ))}
         </div>
       </div>
-
     </div>
   );
 };

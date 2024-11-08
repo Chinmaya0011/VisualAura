@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { IoMdSwap } from 'react-icons/io'; // Swap icon for language toggle
-import blogs from '../assets/blogs.json'; // Ensure the path is correct
+import { useParams, Link } from 'react-router-dom';
+import { IoMdSwap } from 'react-icons/io';
+import blogs from '../assets/blogs.json';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { Link } from 'react-router-dom';
-import LanguageToggleButton from '../components/LanguageToggleButton';  // Importing LanguageToggleButton
+import LanguageToggleButton from '../components/LanguageToggleButton';
 import ShareBlogButton from '../components/ShareBlogButton';
+
 const BlogDetail = () => {
   const { id } = useParams();
   const blog = blogs.find((b) => b.id === parseInt(id));
-  const [language, setLanguage] = useState('english');  // State to toggle language globally
+  const [language, setLanguage] = useState('english');
 
-  if (!blog) {
-    return <div className="text-center text-red-500">Blog not found!</div>;
+  // Early return for cases where blog isn't found
+  if (!blog || !blog.title || !blog.description) {
+    return <div className="text-center text-red-500 mt-20 text-2xl">Blog not found!</div>;
   }
 
   const toggleLanguage = () => {
@@ -21,39 +22,53 @@ const BlogDetail = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col">
-      <Navbar /> {/* Include your Navbar here */}
+    <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
+      <Navbar />
       
-      <div className="container mx-auto px-4 py-8 flex-grow max-w-screen-lg">
-        {/* Language Toggle Button */}
-        <LanguageToggleButton language={language} toggleLanguage={toggleLanguage} /> {/* Language toggle button here */}
-
-        <h1 className="text-2xl font-bold text-center mb-6 text-indigo-700">
+      <div className="container mx-auto px-4 py-10 flex-grow max-w-screen-md">
+        
+        {/* Language Toggle */}
+        <div className="flex justify-end mb-4">
+          <LanguageToggleButton language={language} toggleLanguage={toggleLanguage} />
+        </div>
+        
+        {/* Blog Title */}
+        <h1 className="text-2xl font-bold text-start mb-6 text-blue-800 transition-transform duration-300 ">
           {language === 'english' ? blog.title.english : blog.title.hinglish}
         </h1>
-
-        <div className="text-sm text-gray-500 mb-4">
-          <span>{blog.author} | </span>
+        
+        {/* Author and Date */}
+       
+        
+        {/* Blog Content */}
+        <div className="  rounded-lg  leading-relaxed text-lg transition-all duration-300">
+          <p className="text-gray-700">
+            {language === 'english' ? blog.description.english : blog.description.hinglish}
+          </p>
+           <div className="flex justify-start items-center text-sm text-gray-600 mb-4 mt-4 italic">
+          <span className="font-medium">{blog.author}</span>
+          <span className="mx-2">|</span>
           <span>{blog.published_date}</span>
         </div>
-
-        <p className="text-lg text-gray-700 mb-6">
-          {language === 'english' ? blog.description.english : blog.description.hinglish}
-        </p>
-
-        <div className="flex justify-center">
+          {/* Share Button */}
+          <div className="mt-6 flex justify-end">
+            <ShareBlogButton />
+          </div>
+        </div>
+        
+        {/* Back to Blog List */}
+        <div className="flex justify-center mt-10">
           <Link
             to="/blog"
-            className="text-blue-500 hover:text-blue-700 font-semibold text-lg flex items-center space-x-2 transform hover:scale-110 transition-all duration-300"
+            className="text-blue-600 hover:text-blue-800 font-semibold flex items-center space-x-2 transition-transform duration-300 transform hover:scale-105"
           >
             <IoMdSwap className="transform rotate-90" />
             <span>Back to Blog List</span>
           </Link>
         </div>
-        <ShareBlogButton/>
       </div>
-
-      <Footer /> {/* Include your Footer here */}
+      
+      <Footer />
     </div>
   );
 };
