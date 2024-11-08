@@ -10,6 +10,7 @@ import Contact from '../pages/Contact'; // Create this component if not existing
 import NotFound from '../pages/NotFound'; // Create a NotFound component for 404 errors
 import FreeQuotePage from '../pages/FreeQuotePage';
 import Blogs from '../pages/Blogs';
+import BlogDetail from '../pages/BlogDetail';
 const AppRoutes = () => {
   return (
     <Router>
@@ -21,6 +22,7 @@ const AppRoutes = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/freeQuote" element={<FreeQuotePage />} />
         <Route path="/blog" element={<Blogs />} />
+        <Route path="/blog/:id" element={<BlogDetail />} /> {/* Individual blog page */}
 
         <Route path="*" element={<NotFound />} /> {/* Catch-all route for 404 */}
       </Routes>
