@@ -6,7 +6,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import LanguageToggleButton from '../components/LanguageToggleButton';  // Importing LanguageToggleButton
-
+import ShareBlogButton from '../components/ShareBlogButton';
 const BlogDetail = () => {
   const { id } = useParams();
   const blog = blogs.find((b) => b.id === parseInt(id));
@@ -50,6 +50,7 @@ const BlogDetail = () => {
             <span>Back to Blog List</span>
           </Link>
         </div>
+        <ShareBlogButton/>
       </div>
 
       <Footer /> {/* Include your Footer here */}
