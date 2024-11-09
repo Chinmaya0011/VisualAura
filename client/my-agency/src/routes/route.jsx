@@ -11,6 +11,7 @@ import NotFound from '../pages/NotFound'; // Create a NotFound component for 404
 import FreeQuotePage from '../pages/FreeQuotePage';
 import Blogs from '../pages/Blogs';
 import BlogDetail from '../pages/BlogDetail';
+
 const AppRoutes = () => {
   return (
     <Router>
