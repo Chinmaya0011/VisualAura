@@ -38,12 +38,14 @@ const Services = () => {
     setShowAll(!showAll);
   };
 
+  // Use a single background color for all services and add 3D shadow effects
   const services = serviceData.map((service, index) => ({
     id: index + 1,
     icon: iconMap[service.icon] || <FaDesktop />, // Dynamically get the icon from the map
     title: service.title,
     description: service.description,
-    bgColor: service.bgColor || 'bg-gradient-to-br from-teal-500 to-blue-600',
+    bgColor: 'bg-gray-800', // Single background color (dark gray)
+    iconColor: `text-${['red', 'green', 'blue', 'yellow', 'purple'][index % 5]}-500`, // Different icon colors
   }));
 
   return (
@@ -55,9 +57,9 @@ const Services = () => {
             key={service.id}
             className={`rounded-lg border border-gray-300 p-6 text-center transform transition-all duration-300 hover:scale-105 hover:shadow-2xl shadow-lg ${service.bgColor} text-gray-100`}
           >
-            <div className="rounded-full p-6 inline-block mb-4 bg-white bg-opacity-30 shadow-lg">
+            <div className="rounded-full p-6 inline-block mb-4 bg-white bg-opacity-30 shadow-xl">
               {/* Increase the icon size with 'text-4xl' or 'text-5xl' */}
-              <div className="text-4xl">{service.icon}</div>
+              <div className={`text-4xl ${service.iconColor}`}>{service.icon}</div>
             </div>
             <h3 className="text-2xl font-semibold mb-2">{service.title}</h3>
             <p className="text-sm">{service.description}</p>

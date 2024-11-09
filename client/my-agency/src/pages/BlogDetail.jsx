@@ -24,38 +24,37 @@ const BlogDetail = () => {
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
       <Navbar />
-      
+
       <div className="container mx-auto px-4 py-10 flex-grow max-w-screen-md">
-        
         {/* Language Toggle */}
         <div className="flex justify-end mb-4">
           <LanguageToggleButton language={language} toggleLanguage={toggleLanguage} />
         </div>
-        
+
         {/* Blog Title */}
-        <h1 className="text-2xl font-bold text-start mb-6 text-blue-800 transition-transform duration-300 ">
+        <h1 className="text-2xl font-bold text-start mb-6 text-blue-800 transition-transform duration-300">
           {language === 'english' ? blog.title.english : blog.title.hinglish}
         </h1>
-        
+
         {/* Author and Date */}
-       
-        
-        {/* Blog Content */}
-        <div className="  rounded-lg  leading-relaxed text-lg transition-all duration-300">
-          <p className="text-gray-700">
-            {language === 'english' ? blog.description.english : blog.description.hinglish}
-          </p>
-           <div className="flex justify-start items-center text-sm text-gray-600 mb-4 mt-4 italic">
+        <div className="flex justify-start items-center text-sm text-gray-600 mb-4 mt-4 italic">
           <span className="font-medium">{blog.author}</span>
           <span className="mx-2">|</span>
           <span>{blog.published_date}</span>
         </div>
+
+        {/* Blog Content */}
+        <div className="rounded-lg leading-relaxed text-lg transition-all duration-300">
+          <p className="text-gray-700">
+            {language === 'english' ? blog.description.english : blog.description.hinglish}
+          </p>
+
           {/* Share Button */}
           <div className="mt-6 flex justify-end">
             <ShareBlogButton />
           </div>
         </div>
-        
+
         {/* Back to Blog List */}
         <div className="flex justify-center mt-10">
           <Link
@@ -67,7 +66,7 @@ const BlogDetail = () => {
           </Link>
         </div>
       </div>
-      
+
       <Footer />
     </div>
   );

@@ -1,26 +1,36 @@
-import React from 'react';
-import { IoMdSwap } from 'react-icons/io'; // Make sure this import is included at the top
-import Draggable from 'react-draggable'; // Import Draggable from react-draggable
+import React, { useRef } from 'react';
+import { IoMdSwap } from 'react-icons/io'; // Import the icon
+import Draggable from 'react-draggable'; // Import Draggable
 
 const LanguageToggleButton = ({ language, toggleLanguage }) => {
+  const draggableRef = useRef(null); // Create a ref for the draggable element
+
+  const handleTouchStart = (e) => {
+    e.stopPropagation(); // Prevent default touch behavior
+    toggleLanguage(); // Call the toggle language function
+  };
+
   return (
     <Draggable
+      nodeRef={draggableRef} // Pass the ref here to avoid findDOMNode
       defaultPosition={{ x: 10, y: 10 }} // Initial position of the button
-      bounds="body" // Allows the button to move within the body (entire page)
+      bounds="body" // Ensures the button stays within the body
     >
       <div
-        className="z-10 cursor-move" // Add the cursor style to indicate drag action
+        ref={draggableRef} // Attach the ref to the draggable div
+        className="z-10 cursor-move" // Add the cursor style for drag action
         style={{
           position: 'absolute', // Absolute positioning for free movement
-          padding: '0', // Remove padding to avoid interference with positioning
+          padding: '0', // Remove padding
         }}
       >
         <button
-          onClick={toggleLanguage}
+          onClick={toggleLanguage} // Handle click for desktop
+          onTouchStart={handleTouchStart} // Handle touch events for mobile
           className="bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 px-6 rounded-full shadow-lg transform hover:scale-110 transition-all duration-300"
           style={{
-            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', // Optional: adding a subtle shadow effect
-            zIndex: 10, // Ensures the button stays on top during dragging
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', // Subtle shadow effect
+            zIndex: 9999, // Ensure it stays on top during dragging
           }}
         >
           {language === 'english' ? 'English' : 'Hinglish'}
