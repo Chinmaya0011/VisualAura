@@ -2,91 +2,45 @@ import React from 'react';
 
 const teamMembers = [
   {
+    name: 'Leslie Alexander',
+    role: 'Co-Founder / CEO',
+    imageUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  },
+  {
     name: 'John Doe',
-    role: 'CEO & Founder',
-    description: 'Leading the company with innovation and passion.',
+    role: 'CTO',
     imageUrl: 'https://via.placeholder.com/150', // Placeholder image
   },
   {
     name: 'Jane Smith',
-    role: 'CTO',
-    description: 'Expert in software development and cloud solutions.',
-    imageUrl: 'https://via.placeholder.com/150', // Placeholder image
-  },
-  {
-    name: 'Emily Johnson',
     role: 'Marketing Director',
-    description: 'Driving growth through creative strategies.',
     imageUrl: 'https://via.placeholder.com/150', // Placeholder image
   },
 ];
 
 const OurTeam = () => {
   return (
-    <section className="py-20 px-8 bg-white">
-      <h2 className="text-3xl font-bold text-center text-gray-900 mb-16">
-        Meet Our Team
-      </h2>
-
-      <div className="flex flex-wrap justify-center gap-12">
-        {teamMembers.map((member, index) => (
-          <div
-            key={index}
-            className="max-w-xs p-6 bg-white border border-gray-200 rounded-lg shadow-xl transform hover:scale-105 hover:rotate-3d transition-all duration-500 hover:shadow-2xl hover:bg-opacity-90"
-            style={{
-              background: 'rgba(255, 255, 255, 0.8)',
-              backdropFilter: 'blur(10px)',
-              transformStyle: 'preserve-3d',
-              perspective: '1000px',
-            }}
-          >
-            {/* Profile Image */}
-            <div className="relative w-32 h-32 mx-auto mb-6">
-              <img
-                src={member.imageUrl}
-                alt={member.name}
-                className="w-full h-full object-cover rounded-full border-4 border-gray-300 shadow-xl transform transition-all duration-300"
-              />
-            </div>
-
-            {/* Member Name */}
-            <h3 className="text-xl font-semibold text-center text-gray-900 mt-2">
-              {member.name}
-            </h3>
-
-            {/* Member Role */}
-            <p className="text-center text-gray-600 text-lg mt-1">
-              {member.role}
-            </p>
-
-            {/* Description */}
-            <p className="text-center text-gray-500 mt-4">{member.description}</p>
-
-            {/* Social Links */}
-            <div className="flex justify-center gap-6 mt-6">
-              <a
-                href="#"
-                className="text-blue-500 hover:text-blue-700 transition duration-300"
-              >
-                <i className="fab fa-linkedin text-2xl"></i>
-              </a>
-              <a
-                href="#"
-                className="text-gray-800 hover:text-black transition duration-300"
-              >
-                <i className="fab fa-github text-2xl"></i>
-              </a>
-              <a
-                href="#"
-                className="text-blue-400 hover:text-blue-600 transition duration-300"
-              >
-                <i className="fab fa-twitter text-2xl"></i>
-              </a>
-            </div>
-          </div>
-        ))}
+    <div className="bg-white py-16">
+      <div className="mx-auto grid max-w-7xl gap-20 px-6 lg:px-8 xl:grid-cols-3">
+        <div className="max-w-xl">
+          <h2 className="text-gray-900 text-3xl font-semibold tracking-tight sm:text-4xl">Meet Our Leadership</h2>
+          <p className="mt-6 text-lg text-gray-600">We’re a dynamic group of individuals who are passionate about what we do and dedicated to delivering the best results for our clients.</p>
+        </div>
+        <ul role="list" className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
+          {teamMembers.map((member, index) => (
+            <li key={index}>
+              <div className="flex items-center gap-x-6">
+                <img className="h-16 w-16 rounded-full" src={member.imageUrl} alt={member.name} />
+                <div>
+                  <h3 className="text-base font-semibold tracking-tight text-gray-900">{member.name}</h3>
+                  <p className="text-sm font-semibold text-indigo-600">{member.role}</p>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 const TeamMetrics = () => {
-  const [showAll, setShowAll] = useState(false);
   const [counts, setCounts] = useState({
     teamMembers: 0,
     deliveryRate: 0,
@@ -27,8 +26,6 @@ const TeamMetrics = () => {
     { title: 'Technologies Used', value: 15, icon: '💻' },
     { title: 'Award-Winning Projects', value: 3, icon: '🏆' },
   ];
-
-  const metricsToShow = showAll ? metricsData : metricsData.slice(0, 5);
 
   // Using useRef to ensure the counting only starts once
   const isCountingRef = useRef(false);
@@ -66,31 +63,24 @@ const TeamMetrics = () => {
   }, [counts]); // Add `counts` in dependency array to ensure effect triggers after count is updated
 
   return (
-    <section className="py-16 bg-gray-50 text-center">
-      <h2 className="text-4xl font-bold mb-12 text-gray-900">Our Team & Performance</h2>
-      <div className="flex flex-wrap justify-center space-x-4 px-4 md:px-8">
-        {metricsToShow.map((metric, index) => (
+    <section className="py-12 bg-gradient-to-r from-blue-100 to-white text-center">
+      <h2 className="text-3xl font-bold mb-8 text-gray-900">Our Team & Performance</h2>
+      <div className="flex overflow-x-auto gap-4 px-4 md:px-6 hide-scrollbar">
+        {metricsData.map((metric, index) => (
           <div
             key={index}
-            className={`bg-white shadow-lg rounded-lg p-6 m-4 w-60 flex flex-col items-center transition-transform transform hover:scale-105 hover:shadow-xl border-2 border-transparent hover:border-blue-500`}
+            className="bg-white rounded-full shadow-sm p-4 w-32 h-32 flex flex-col items-center justify-center transform transition-transform hover:scale-105 hover:shadow-md hover:border-t-4 hover:border-blue-600 border-t-4 border-transparent"
           >
-            <div className="text-6xl mb-4 text-blue-600 transition-colors duration-300 hover:text-blue-800">
+            <div className="text-2xl mb-2 text-blue-600 transition-colors duration-300 hover:text-blue-800">
               {metric.icon}
             </div>
-            <h3 className="text-4xl font-semibold text-gray-800 mb-2">
+            <h3 className="text-xl font-semibold text-gray-800 mb-1">
               {counts[Object.keys(counts)[index]]}+
             </h3>
-            <p className="text-lg font-medium text-gray-600">{metric.title}</p>
+            <p className="text-xs font-medium text-gray-600">{metric.title}</p>
           </div>
         ))}
       </div>
-
-      <button
-        onClick={() => setShowAll(!showAll)}
-        className="mt-6 text-blue-600 font-semibold text-lg"
-      >
-        {showAll ? 'Show Less' : 'Show More'}
-      </button>
     </section>
   );
 };

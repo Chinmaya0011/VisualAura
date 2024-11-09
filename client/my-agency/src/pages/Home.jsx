@@ -25,54 +25,69 @@ const Home = () => {
   }, []);
 
   return (
-    <>
-      
-      <div>
-        <Navbar />
+    <div>
+      <Navbar />
 
-        {/* Hero Section */}
+      {/* Hero Section */}
+      <div data-aos="fade-up">
         <Hero />
-
-        {/* Core Sections */}
-        <Services />
-        <TechnologiesUsed />
-
-        {/* Lazy-loaded sections with Suspense fallback */}
-        <Suspense fallback={<div>Loading Portfolio...</div>}>
-          <div data-aos="fade-up">
-            <Portfolio />
-          </div>
-        </Suspense>
-
-        <Suspense fallback={<div>Loading Testimonials...</div>}>
-          <div data-aos="fade-up">
-            <Testimonials />
-          </div>
-        </Suspense>
-
-        <Pricing />
-
-        <Suspense fallback={<div>Loading Our Team...</div>}>
-          <div data-aos="fade-up">
-            <OurTeam />
-          </div>
-        </Suspense>
-
-        <TeamMetrics />
-
-        <AboutUs />
-
-        {/* Call-to-Action */}
-        <CTA />
-
-        {/* Contact Form and Footer */}
-        <Contact />
-        <Footer />
-
-        {/* WhatsApp Icon */}
-        <WhatsAppIcon /> {/* Add the WhatsApp icon here */}
       </div>
-    </>
+
+      {/* Core Sections */}
+      <div data-aos="fade-up">
+        <Services />
+      </div>
+      <div data-aos="fade-up">
+        <TechnologiesUsed />
+      </div>
+
+      {/* Lazy-loaded sections with Suspense fallback */}
+      <Suspense fallback={<div>Loading Portfolio...</div>}>
+        <div data-aos="fade-up">
+          <Portfolio />
+        </div>
+      </Suspense>
+
+      <Suspense fallback={<div>Loading Testimonials...</div>}>
+        <div data-aos="fade-up">
+          <Testimonials />
+        </div>
+      </Suspense>
+
+      <div data-aos="fade-up">
+        <Pricing />
+      </div>
+
+      <Suspense fallback={<div>Loading Our Team...</div>}>
+        <div data-aos="fade-up">
+          <OurTeam />
+        </div>
+      </Suspense>
+
+      <div data-aos="fade-up">
+        <TeamMetrics />
+      </div>
+
+      <div data-aos="fade-up">
+        <AboutUs />
+      </div>
+
+      {/* Call-to-Action */}
+      <div data-aos="fade-up">
+        <CTA />
+      </div>
+
+      {/* Contact Form and Footer */}
+      <div data-aos="fade-up">
+        <Contact />
+      </div>
+      <div data-aos="fade-up">
+        <Footer />
+      </div>
+
+      {/* WhatsApp Icon */}
+      <WhatsAppIcon /> {/* Add the WhatsApp icon here */}
+    </div>
   );
 };
 
