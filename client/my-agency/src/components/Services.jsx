@@ -52,7 +52,7 @@ const Services = () => {
     <div className="bg-gray-50 py-16">
       <h2 className="text-4xl font-bold text-center mb-8 text-gray-800 font-serif">Our Services</h2>
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-8 px-6">
-        {services.slice(0, showAll ? services.length : 8).map((service) => (
+        {services.slice(0, showAll ? services.length :4).map((service) => (
           <div
             key={service.id}
             className={`rounded-lg border border-gray-300 p-6 text-center transform transition-all duration-300 hover:scale-105 hover:shadow-2xl shadow-lg ${service.bgColor} text-gray-100`}
