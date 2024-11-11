@@ -100,8 +100,8 @@ const Portfolio = () => {
     <div className="text-center mt-8">
       <button
         onClick={toggleShowMore}
-        className="px-6 py-2 bg-gradient-to-r from-blue-500 to-green-500 text-white rounded-full font-medium hover:from-green-500 hover:to-blue-500 transition-all duration-300"
-      >
+ className="px-6 py-2 bg-gray-700 text-white font-medium rounded-full hover:bg-gray-600 transition-colors duration-200 shadow-md"
+>
         {showAll ? 'Show Less' : 'Show More'}
       </button>
     </div>

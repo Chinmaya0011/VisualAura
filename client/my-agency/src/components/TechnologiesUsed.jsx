@@ -66,7 +66,7 @@ const TechnologiesUsed = () => {
       </div>
 
       <div className="text-center mt-10">
-        <button
+      <button
           onClick={toggleShowAll}
           className="px-6 py-2 bg-gray-700 text-white font-medium rounded-full hover:bg-gray-600 transition-colors duration-200 shadow-md"
         >
