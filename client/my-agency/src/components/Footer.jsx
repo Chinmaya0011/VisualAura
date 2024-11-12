@@ -1,7 +1,32 @@
 import React from 'react';
 import { FaFacebook, FaTwitter, FaLinkedin, FaGithub, FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
-
+import {useSectionContext} from '../context/SectionContext'
 const Footer = () => {
+  // Access the section references from context
+  const {
+    heroRef,
+    servicesRef,
+    technologiesRef,
+    portfolioRef,
+    testimonialsRef,
+    pricingRef,
+    ourTeamRef,
+    metricsRef,
+    aboutUsRef,
+    ctaRef,
+    contactRef,
+  } = useSectionContext();
+
+  // Scroll to a specific section when a link is clicked
+  const scrollToSection = (sectionRef) => {
+    if (sectionRef && sectionRef.current) {
+      window.scrollTo({
+        top: sectionRef.current.offsetTop,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
     <footer className="bg-gray-800 text-white py-10 mt-10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 justify-center items-start">
@@ -31,11 +56,11 @@ const Footer = () => {
         <div className="space-y-4 text-center lg:text-left">
           <h4 className="text-xl font-semibold mb-3 text-yellow-400">Quick Links</h4>
           <ul className="text-sm space-y-2">
-            <li><a href="/services" className="hover:text-blue-400">Services</a></li>
-            <li><a href="/portfolio" className="hover:text-blue-400">Portfolio</a></li>
-            <li><a href="/contact" className="hover:text-blue-400">Contact</a></li>
-            <li><a href="/about" className="hover:text-blue-400">About Me</a></li>
-            <li><a href="/blog" className="hover:text-blue-400">Blog</a></li>
+            <li><button onClick={() => scrollToSection(servicesRef)} className="hover:text-blue-400">Services</button></li>
+            <li><button onClick={() => scrollToSection(portfolioRef)} className="hover:text-blue-400">Portfolio</button></li>
+            <li><button onClick={() => scrollToSection(contactRef)} className="hover:text-blue-400">Contact</button></li>
+            <li><button onClick={() => scrollToSection(aboutUsRef)} className="hover:text-blue-400">About Me</button></li>
+            <li><button onClick={() => scrollToSection(ctaRef)} className="hover:text-blue-400">Blog</button></li>
           </ul>
         </div>
 

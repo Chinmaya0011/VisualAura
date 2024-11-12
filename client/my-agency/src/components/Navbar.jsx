@@ -1,11 +1,24 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSectionContext } from '../context/SectionContext'; // Import the custom hook
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false); // State to track if the menu is open
+  const [isOpen, setIsOpen] = useState(false);
 
+  // Access section refs using the custom hook
+  const { heroRef, servicesRef, technologiesRef, portfolioRef, aboutUsRef, contactRef } = useSectionContext();
+
+  // Toggle menu for mobile view
   const toggleMenu = () => {
-    setIsOpen(prevState => !prevState); // Toggle the menu state
+    setIsOpen((prevState) => !prevState);
+  };
+
+  // Scroll to section
+  const onSectionClick = (sectionRef) => {
+    window.scrollTo({
+      top: sectionRef.current.offsetTop,
+      behavior: 'smooth',
+    });
   };
 
   return (
@@ -29,35 +42,36 @@ const Navbar = () => {
           </svg>
         </button>
         <div className={`w-full md:block md:w-auto ${isOpen ? 'block' : 'hidden'}`} id="navbar-default">
-          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 md:mt-0 md:flex-row md:space-x-8 rtl:space-x-reverse md:space-x-10 md:border-0 md:bg-transparent">
+          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 md:mt-0 md:flex-row md:space-x-6 rtl:space-x-reverse md:border-0 md:bg-transparent">
+           
             <li>
-              <Link to="/" className="block py-2 px-3 text-white rounded-md hover:bg-blue-800 focus:ring-2 focus:ring-blue-300 md:hover:bg-transparent md:p-0 transform transition-all duration-300 hover:scale-105 hover:translate-y-[-4px]">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/about" className="block py-2 px-3 text-white rounded-md hover:bg-blue-800 focus:ring-2 focus:ring-blue-300 md:hover:bg-transparent md:p-0 transform transition-all duration-300 hover:scale-105 hover:translate-y-[-4px]">
-                About
-              </Link>
-            </li>
-            <li>
-              <Link to="/services" className="block py-2 px-3 text-white rounded-md hover:bg-blue-800 focus:ring-2 focus:ring-blue-300 md:hover:bg-transparent md:p-0 transform transition-all duration-300 hover:scale-105 hover:translate-y-[-4px]">
+              <button onClick={() => onSectionClick(servicesRef)} className="block py-2 px-3 text-white rounded-md hover:bg-blue-800">
                 Services
-              </Link>
+              </button>
             </li>
             <li>
-              <Link to="/pricing" className="block py-2 px-3 text-white rounded-md hover:bg-blue-800 focus:ring-2 focus:ring-blue-300 md:hover:bg-transparent md:p-0 transform transition-all duration-300 hover:scale-105 hover:translate-y-[-4px]">
-                Pricing
-              </Link>
+              <button onClick={() => onSectionClick(technologiesRef)} className="block py-2 px-3 text-white rounded-md hover:bg-blue-800">
+                Technologies
+              </button>
             </li>
             <li>
-              <Link to="/contact" className="block py-2 px-3 text-white rounded-md hover:bg-blue-800 focus:ring-2 focus:ring-blue-300 md:hover:bg-transparent md:p-0 transform transition-all duration-300 hover:scale-105 hover:translate-y-[-4px]">
+              <button onClick={() => onSectionClick(portfolioRef)} className="block py-2 px-3 text-white rounded-md hover:bg-blue-800">
+                Portfolio
+              </button>
+            </li>
+            <li>
+              <button onClick={() => onSectionClick(aboutUsRef)} className="block py-2 px-3 text-white rounded-md hover:bg-blue-800">
+                About Us
+              </button>
+            </li>
+            <li>
+              <button onClick={() => onSectionClick(contactRef)} className="block py-2 px-3 text-white rounded-md hover:bg-blue-800">
                 Contact
-              </Link>
+              </button>
             </li>
             <li>
-              <Link to="/blog" target='blank' className="block py-2 px-3 text-white rounded-md hover:bg-blue-800 focus:ring-2 focus:ring-blue-300 md:hover:bg-transparent md:p-0 transform transition-all duration-300 hover:scale-105 hover:translate-y-[-4px]">
-                Blogs
+              <Link to="/blog" target="_blank" className="block py-2 px-3 text-white rounded-md hover:bg-blue-800">
+                Blog
               </Link>
             </li>
           </ul>

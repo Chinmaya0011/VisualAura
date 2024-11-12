@@ -11,8 +11,8 @@ import Footer from '../components/Footer';
 import Contact from '../components/Contact';
 import Pricing from '../components/Pricing';
 import TeamMetrics from '../components/metricsData';
-import NotificationBar from '../components/NotificationBar';
 import WhatsAppIcon from '../components/WhatsAppIcon'; // Import the WhatsApp icon
+import { useSectionContext } from '../context/SectionContext';
 
 // Lazy-loaded components for better performance
 const Portfolio = lazy(() => import('../components/Portfolio'));
@@ -24,61 +24,77 @@ const Home = () => {
     AOS.init(); // Initialize AOS
   }, []);
 
+  // Get section refs from SectionContext
+  const {
+    heroRef,
+    servicesRef,
+    technologiesRef,
+    portfolioRef,
+    testimonialsRef,
+    pricingRef,
+    ourTeamRef,
+    metricsRef,
+    aboutUsRef,
+    ctaRef,
+    contactRef,
+  } = useSectionContext();
+
   return (
     <div>
+      {/* Navbar doesn't need sections passed as props anymore */}
       <Navbar />
 
       {/* Hero Section */}
-      <div data-aos="fade-up">
+      <div ref={heroRef} data-aos="fade-up">
         <Hero />
       </div>
 
       {/* Core Sections */}
-      <div data-aos="fade-up">
+      <div ref={servicesRef} data-aos="fade-up">
         <Services />
       </div>
-      <div data-aos="fade-up">
+      <div ref={technologiesRef} data-aos="fade-up">
         <TechnologiesUsed />
       </div>
 
       {/* Lazy-loaded sections with Suspense fallback */}
       <Suspense fallback={<div>Loading Portfolio...</div>}>
-        <div data-aos="fade-up">
+        <div ref={portfolioRef} data-aos="fade-up">
           <Portfolio />
         </div>
       </Suspense>
 
       <Suspense fallback={<div>Loading Testimonials...</div>}>
-        <div data-aos="fade-up">
+        <div ref={testimonialsRef} data-aos="fade-up">
           <Testimonials />
         </div>
       </Suspense>
 
-      <div data-aos="fade-up">
+      <div ref={pricingRef} data-aos="fade-up">
         <Pricing />
       </div>
 
       <Suspense fallback={<div>Loading Our Team...</div>}>
-        <div data-aos="fade-up">
+        <div ref={ourTeamRef} data-aos="fade-up">
           <OurTeam />
         </div>
       </Suspense>
 
-      <div data-aos="fade-up">
+      <div ref={metricsRef} data-aos="fade-up">
         <TeamMetrics />
       </div>
 
-      <div data-aos="fade-up">
+      <div ref={aboutUsRef} data-aos="fade-up">
         <AboutUs />
       </div>
 
       {/* Call-to-Action */}
-      <div data-aos="fade-up">
+      <div ref={ctaRef} data-aos="fade-up">
         <CTA />
       </div>
 
       {/* Contact Form and Footer */}
-      <div data-aos="fade-up">
+      <div ref={contactRef} data-aos="fade-up">
         <Contact />
       </div>
       <div data-aos="fade-up">
@@ -86,7 +102,7 @@ const Home = () => {
       </div>
 
       {/* WhatsApp Icon */}
-      <WhatsAppIcon /> {/* Add the WhatsApp icon here */}
+      <WhatsAppIcon />
     </div>
   );
 };
