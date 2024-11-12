@@ -1,7 +1,10 @@
 import React from 'react';
 import { FaMapMarkerAlt, FaEnvelope, FaPhone, FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { useContactFormContext } from '../context/ContactFormContext';  // Import the custom hook
 
 const Contact = () => {
+  const { contactData, handleChange } = useContactFormContext(); // Access context data and handler
+
   return (
     <div className="flex flex-col md:flex-row max-w-7xl mx-auto p-6 bg-white shadow-lg rounded-lg overflow-hidden">
       {/* Left Side - Company Office Map Address */}
@@ -44,32 +47,42 @@ const Contact = () => {
         <h2 className="text-3xl font-bold mb-4 text-blue-600">Contact Us</h2>
         <form className="space-y-6">
           <div>
-            <input 
-              type="text" 
-              required 
-              className="mt-1 block w-full p-3 border-b-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-transform transform" 
-              placeholder="Your Name" 
+            <input
+              type="text"
+              name="name"  // Set the name attribute for context
+              value={contactData.name}  // Bind the input to state
+              onChange={handleChange}  // Handle input change via context
+              required
+              className="mt-1 block w-full p-3 border-b-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+              placeholder="Your Name"
             />
           </div>
           <div>
-            <input 
-              type="email" 
-              required 
-              className="mt-1 block w-full p-3 border-b-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-transform transform" 
-              placeholder="Your Email" 
+            <input
+              type="email"
+              name="email"  // Set the name attribute for context
+              value={contactData.email}  // Bind the input to state
+              onChange={handleChange}  // Handle input change via context
+              required
+              className="mt-1 block w-full p-3 border-b-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+              placeholder="Your Email"
             />
           </div>
           <div>
-            <textarea 
-              required 
-              className="mt-1 block w-full p-3 border-b-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-transform transform" 
-              rows="4" 
+            <textarea
+              name="message"  // Set the name attribute for context
+              value={contactData.message}  // Bind the textarea to state
+              onChange={handleChange}  // Handle textarea change via context
+              required
+              className="mt-1 block w-full p-3 border-b-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+              rows="4"
               placeholder="Your Message"
             ></textarea>
           </div>
-          <button 
-            type="submit" 
-            className="w-full bg-blue-500 text-white p-3 rounded-md shadow-md hover:bg-green-600 transition-transform transform">
+          <button
+            type="submit"
+            className="w-full bg-blue-500 text-white p-3 rounded-md shadow-md hover:bg-green-600 transition-transform"
+          >
             Send Message
           </button>
         </form>

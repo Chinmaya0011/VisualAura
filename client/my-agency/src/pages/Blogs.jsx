@@ -1,5 +1,5 @@
 import React from 'react'
-import TechBlog from '../components/TechBlog'
+import TechBlog from '../components/Blog/TechBlog'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 const Blogs = () => {
