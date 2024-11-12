@@ -1,8 +1,8 @@
-// Import React and necessary icons
 import React, { useState } from 'react';
 import { FaUserAlt, FaEnvelope, FaPhoneAlt, FaClipboardList, FaCalendarAlt, FaClock, FaBriefcase } from 'react-icons/fa';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+
 const FreeQuote = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -39,19 +39,19 @@ const FreeQuote = () => {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-center">
-      <h2 className="text-4xl font-bold text-white mb-6">Get a Free Quote</h2>
-      <p className="text-xl text-white mb-8 max-w-3xl mx-auto opacity-80">
+    <section className="py-20 bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 text-center animate-bg-motion">
+      <h2 className="text-5xl font-extrabold text-white mb-8 tracking-wider transition-transform transform hover:scale-105">Get a Free Quote</h2>
+      <p className="text-lg text-white mb-10 max-w-3xl mx-auto opacity-90">
         Fill out the form below to receive a personalized quote for your project. We’ll get back to you as soon as possible!
       </p>
 
-      <div className="max-w-4xl mx-auto bg-white p-8 shadow-xl rounded-2xl border-2 border-indigo-600">
+      <div className="max-w-4xl mx-auto bg-white p-8 shadow-2xl rounded-3xl border-4 border-indigo-500 transform transition-all  hover:shadow-xl">
         <form onSubmit={handleSubmit}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {/* Name Field */}
             <div className="relative">
-              <label htmlFor="name" className="block text-left text-gray-700">Full Name</label>
-              <div className="flex items-center border-b-2 border-gray-300 py-2">
+              <label htmlFor="name" className="block text-left text-gray-700 font-semibold text-lg">Full Name</label>
+              <div className="flex items-center border-b-2 border-gray-300 py-3">
                 <FaUserAlt className="text-gray-500 mr-3" />
                 <input
                   type="text"
@@ -59,7 +59,7 @@ const FreeQuote = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full p-2 bg-transparent focus:outline-none"
+                  className="w-full p-3 bg-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-lg shadow-md"
                   placeholder="Enter your full name"
                   required
                 />
@@ -68,8 +68,8 @@ const FreeQuote = () => {
 
             {/* Email Field */}
             <div className="relative">
-              <label htmlFor="email" className="block text-left text-gray-700">Email Address</label>
-              <div className="flex items-center border-b-2 border-gray-300 py-2">
+              <label htmlFor="email" className="block text-left text-gray-700 font-semibold text-lg">Email Address</label>
+              <div className="flex items-center border-b-2 border-gray-300 py-3">
                 <FaEnvelope className="text-gray-500 mr-3" />
                 <input
                   type="email"
@@ -77,7 +77,7 @@ const FreeQuote = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full p-2 bg-transparent focus:outline-none"
+                  className="w-full p-3 bg-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-lg shadow-md"
                   placeholder="Enter your email"
                   required
                 />
@@ -86,11 +86,11 @@ const FreeQuote = () => {
           </div>
 
           {/* Mobile and Service Fields */}
-          <div className="mt-6 flex gap-6">
+          <div className="mt-8 flex gap-8">
             {/* Mobile Field */}
             <div className="flex-1 relative">
-              <label htmlFor="mobile" className="block text-left text-gray-700">Mobile Number</label>
-              <div className="flex items-center border-b-2 border-gray-300 py-2">
+              <label htmlFor="mobile" className="block text-left text-gray-700 font-semibold text-lg">Mobile Number</label>
+              <div className="flex items-center border-b-2 border-gray-300 py-3">
                 <FaPhoneAlt className="text-gray-500 mr-3" />
                 <input
                   type="tel"
@@ -98,7 +98,7 @@ const FreeQuote = () => {
                   name="mobile"
                   value={formData.mobile}
                   onChange={handleChange}
-                  className="w-full p-2 bg-transparent focus:outline-none"
+                  className="w-full p-3 bg-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-lg shadow-md"
                   placeholder="Enter your mobile number"
                   required
                 />
@@ -107,15 +107,15 @@ const FreeQuote = () => {
 
             {/* Service Selection */}
             <div className="flex-1 relative">
-              <label htmlFor="service" className="block text-left text-gray-700">Choose Service</label>
-              <div className="flex items-center border-b-2 border-gray-300 py-2">
+              <label htmlFor="service" className="block text-left text-gray-700 font-semibold text-lg">Choose Service</label>
+              <div className="flex items-center border-b-2 border-gray-300 py-3">
                 <FaClipboardList className="text-gray-500 mr-3" />
                 <select
                   id="service"
                   name="service"
                   value={formData.service}
                   onChange={handleChange}
-                  className="w-full p-2 bg-transparent focus:outline-none"
+                  className="w-full p-3 bg-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-lg shadow-md"
                   required
                 >
                   <option value="">Select a service</option>
@@ -129,15 +129,15 @@ const FreeQuote = () => {
           </div>
 
           {/* Project Details */}
-          <div className="mt-6 relative">
-            <label htmlFor="projectDetails" className="block text-left text-gray-700">Project Details</label>
-            <div className="flex items-center border-b-2 border-gray-300 py-2">
+          <div className="mt-8 relative">
+            <label htmlFor="projectDetails" className="block text-left text-gray-700 font-semibold text-lg">Project Details</label>
+            <div className="flex items-center border-b-2 border-gray-300 py-3">
               <textarea
                 id="projectDetails"
                 name="projectDetails"
                 value={formData.projectDetails}
                 onChange={handleChange}
-                className="w-full p-2 bg-transparent focus:outline-none"
+                className="w-full p-3 bg-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-lg shadow-md"
                 placeholder="Describe your project"
                 rows="6"
                 required
@@ -146,10 +146,10 @@ const FreeQuote = () => {
           </div>
 
           {/* Meeting Date & Time */}
-          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-8">
             <div className="relative">
-              <label htmlFor="meetingDate" className="block text-left text-gray-700">Preferred Meeting Date</label>
-              <div className="flex items-center border-b-2 border-gray-300 py-2">
+              <label htmlFor="meetingDate" className="block text-left text-gray-700 font-semibold text-lg">Preferred Meeting Date</label>
+              <div className="flex items-center border-b-2 border-gray-300 py-3">
                 <FaCalendarAlt className="text-gray-500 mr-3" />
                 <input
                   type="date"
@@ -157,15 +157,15 @@ const FreeQuote = () => {
                   name="meetingDate"
                   value={formData.meetingDate}
                   onChange={handleChange}
-                  className="w-full p-2 bg-transparent focus:outline-none"
+                  className="w-full p-3 bg-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-lg shadow-md"
                   required
                 />
               </div>
             </div>
 
             <div className="relative">
-              <label htmlFor="meetingTime" className="block text-left text-gray-700">Preferred Meeting Time</label>
-              <div className="flex items-center border-b-2 border-gray-300 py-2">
+              <label htmlFor="meetingTime" className="block text-left text-gray-700 font-semibold text-lg">Preferred Meeting Time</label>
+              <div className="flex items-center border-b-2 border-gray-300 py-3">
                 <FaClock className="text-gray-500 mr-3" />
                 <input
                   type="time"
@@ -173,7 +173,7 @@ const FreeQuote = () => {
                   name="meetingTime"
                   value={formData.meetingTime}
                   onChange={handleChange}
-                  className="w-full p-2 bg-transparent focus:outline-none"
+                  className="w-full p-3 bg-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-lg shadow-md"
                   required
                 />
               </div>
@@ -181,16 +181,16 @@ const FreeQuote = () => {
           </div>
 
           {/* Professional Type */}
-          <div className="mt-6 relative">
-            <label htmlFor="professionalType" className="block text-left text-gray-700">Professional Type</label>
-            <div className="flex items-center border-b-2 border-gray-300 py-2">
+          <div className="mt-8 relative">
+            <label htmlFor="professionalType" className="block text-left text-gray-700 font-semibold text-lg">Professional Type</label>
+            <div className="flex items-center border-b-2 border-gray-300 py-3">
               <FaBriefcase className="text-gray-500 mr-3" />
               <select
                 id="professionalType"
                 name="professionalType"
                 value={formData.professionalType}
                 onChange={handleChange}
-                className="w-full p-2 bg-transparent focus:outline-none"
+                className="w-full p-3 bg-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-lg shadow-md"
                 required
               >
                 <option value="">Select your professional type</option>
@@ -202,10 +202,10 @@ const FreeQuote = () => {
           </div>
 
           {/* Submit Button */}
-          <div className="mt-6">
+          <div className="mt-8">
             <button
               type="submit"
-              className="px-8 py-3 bg-indigo-600 text-white font-bold rounded-lg shadow-lg hover:bg-indigo-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="px-10 py-4 bg-indigo-600 text-white font-bold text-lg rounded-lg shadow-xl hover:bg-indigo-700 hover:shadow-2xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-indigo-500"
             >
               Get My Quote
             </button>
