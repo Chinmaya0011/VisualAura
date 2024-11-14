@@ -1,21 +1,6 @@
 import React from 'react';
 import { FaFacebook, FaTwitter, FaLinkedin, FaGithub, FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
-import {useSectionContext} from '../context/SectionContext'
 const Footer = () => {
-  // Access the section references from context
-  const {
-    heroRef,
-    servicesRef,
-    technologiesRef,
-    portfolioRef,
-    testimonialsRef,
-    pricingRef,
-    ourTeamRef,
-    metricsRef,
-    aboutUsRef,
-    ctaRef,
-    contactRef,
-  } = useSectionContext();
 
   // Scroll to a specific section when a link is clicked
   const scrollToSection = (sectionRef) => {

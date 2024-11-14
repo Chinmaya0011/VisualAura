@@ -1,36 +1,28 @@
-// BlogDetail.js
-import React, { useState, useEffect } from 'react';
+// src/pages/BlogDetail.js
+
+import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { IoMdSwap } from 'react-icons/io';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import LanguageToggleButton from '../components/LanguageToggleButton';
 import ShareBlogButton from '../components/ShareBlogButton';
-import { useBlogs } from '../context/BlogContext';
+import useBlogDetail from '../hooks/useBlogDetail';
+import useLanguageToggle from '../hooks/useLanguageToggle';
 
 const BlogDetail = () => {
   const { id } = useParams();
-  const { fetchBlogById, loading, error } = useBlogs();
-  const [blog, setBlog] = useState(null);
-  const [language, setLanguage] = useState('english');
-
-  // Fetch blog by ID when component mounts
-  useEffect(() => {
-    const getBlog = async () => {
-      const blogData = await fetchBlogById(id);
-      setBlog(blogData);
-    };
-    getBlog();
-  }, [id]);
-
-  // Toggle between English and Hinglish
-  const toggleLanguage = () => {
-    setLanguage((prevLanguage) => (prevLanguage === 'english' ? 'hinglish' : 'english'));
-  };
+  const { blog, loading, error } = useBlogDetail(id);
+  const { language, toggleLanguage } = useLanguageToggle();
 
   if (loading) return <div className="text-center mt-20 text-2xl">Loading...</div>;
+
   if (error || !blog || !blog?.title) {
-    return <div className="text-center text-red-500 mt-20 text-2xl">Blog not found!</div>;
+    return (
+      <div className="text-center text-red-500 mt-20 text-2xl">
+        {error ? 'Error fetching blog!' : 'Blog not found!'}
+      </div>
+    );
   }
 
   return (
@@ -53,7 +45,17 @@ const BlogDetail = () => {
         </div>
 
         <div className="rounded-lg leading-relaxed text-lg text-gray-800">
-          <p>{language === 'english' ? blog.description.english : blog.description.hinglish}</p>
+          {/* Render HTML description directly */}
+          {blog.htmlDescription ? (
+            <div
+              className="blog-description"
+              dangerouslySetInnerHTML={{
+                __html: blog.htmlDescription, // Just render HTML content
+              }}
+            />
+          ) : (
+            <p>{language === 'english' ? blog.description.english : blog.description.hinglish}</p>
+          )}
         </div>
 
         <div className="mt-6 flex justify-end">

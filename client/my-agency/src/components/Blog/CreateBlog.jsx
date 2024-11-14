@@ -1,68 +1,16 @@
-import React, { useState } from 'react';
-import { useBlogs } from '../../context/BlogContext';
-import Swal from 'sweetalert2';
+import React from 'react';
 import { FaCheckCircle } from 'react-icons/fa';
-
+import useCreateBlog from '../../hooks/useCreateBlog'; // Import the custom hook
+const categories = [
+  { name: 'AI/ML', value: 'aiml' },
+  { name: 'Mobiles', value: 'mobiles' },
+  { name: 'Laptops', value: 'laptops' },
+  { name: 'Gadgets', value: 'gadgets' },
+  { name: 'Social', value: 'social' },
+  { name: 'Gaming', value: 'gaming' }
+];
 const CreateBlog = () => {
-  const { createBlog } = useBlogs();
-  const [formData, setFormData] = useState({
-    title: { english: '', hinglish: '' },
-    description: { english: '', hinglish: '' },
-    author: '',
-    category: '',
-    tags: '',
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    if (name.startsWith('title') || name.startsWith('description')) {
-      const [field, language] = name.split('.');
-      setFormData((prevState) => ({
-        ...prevState,
-        [field]: {
-          ...prevState[field],
-          [language]: value,
-        },
-      }));
-    } else {
-      setFormData((prevState) => ({
-        ...prevState,
-        [name]: value,
-      }));
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const blogData = { ...formData, tags: formData.tags.split(',').map((tag) => tag.trim()) };
-
-    try {
-      await createBlog(blogData);
-      Swal.fire({
-        icon: 'success',
-        title: 'Blog Created!',
-        text: 'Your blog has been successfully created.',
-        confirmButtonColor: '#3085d6',
-        confirmButtonText: 'OK',
-      });
-      setFormData({
-        title: { english: '', hinglish: '' },
-        description: { english: '', hinglish: '' },
-        author: '',
-        category: '',
-        tags: '',
-      });
-    } catch (error) {
-      console.error('Error creating blog:', error);
-      Swal.fire({
-        icon: 'error',
-        title: 'Error!',
-        text: 'Failed to create blog. Please try again.',
-        confirmButtonColor: '#d33',
-        confirmButtonText: 'OK',
-      });
-    }
-  };
+  const { formData, handleChange, handleSubmit } = useCreateBlog();
 
   return (
     <div className="max-w-4xl mx-auto p-8 bg-white shadow-md rounded-lg mt-8">
@@ -121,6 +69,25 @@ const CreateBlog = () => {
           />
         </div>
 
+        {/* HTML Description (Rendered HTML Content) */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700">HTML Description</label>
+          <textarea
+            name="htmlDescription"
+            value={formData.htmlDescription}
+            onChange={handleChange}
+            className="mt-2 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            rows="4"
+            placeholder="<h1>HTML</h1><p>Content here</p>"
+          />
+        </div>
+
+        {/* Render HTML Description */}
+        <div
+          className="mt-4 p-4 border border-gray-300 rounded-lg bg-gray-50"
+          dangerouslySetInnerHTML={{ __html: formData.htmlDescription }}
+        />
+
         {/* Author */}
         <div>
           <label className="block text-sm font-medium text-gray-700">Author</label>
@@ -136,28 +103,22 @@ const CreateBlog = () => {
 
         {/* Category */}
         <div>
-          <label className="block text-sm font-medium text-gray-700">Category</label>
-          <select
-            name="category"
-            value={formData.category}
-            onChange={handleChange}
-            className="mt-2 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            required
-          >
-            <option value="">Select a category</option>
-            <option value="AI/ML">AI & Machine Learning</option>
-            <option value="Mobile Phones">Mobile Phones</option>
-            <option value="Laptops">Laptops</option>
-            <option value="Smart Gadgets">Smart Gadgets</option>
-            <option value="Social Media">Social Media</option>
-            <option value="Internet">Internet</option>
-            <option value="Gaming">Gaming</option>
-            <option value="Software Tools">Software Tools</option>
-            <option value="E-commerce">E-commerce</option>
-            <option value="Digital Payment">Digital Payment</option>
-            <option value="Electric Vehicles">Electric Vehicles</option>
-          </select>
-        </div>
+      <label className="block text-sm font-medium text-gray-700">Category</label>
+      <select
+        name="category"
+        value={formData.category}
+        onChange={handleChange}
+        className="mt-2 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        required
+      >
+        <option value="">Select a category</option>
+        {categories.map((category, index) => (
+          <option key={index} value={category.value}>
+            {category.name}
+          </option>
+        ))}
+      </select>
+    </div>
 
         {/* Tags */}
         <div>

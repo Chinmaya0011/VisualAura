@@ -1,10 +1,11 @@
-// TechBlog.js
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { IoMdSwap } from 'react-icons/io';
 import { useBlogs } from '../../context/BlogContext';
 import LanguageToggleButton from '../LanguageToggleButton';
+import useLanguageToggle from '../../hooks/useLanguageToggle';
 
+// Truncate function for description preview
 const truncateDescription = (description) => {
   const words = description.split(' ');
   return words.length > 20 ? words.slice(0, 20).join(' ') + '...' : description;
@@ -12,14 +13,19 @@ const truncateDescription = (description) => {
 
 const TechBlog = () => {
   const { blogs, loading, error } = useBlogs();
-  const [language, setLanguage] = useState('english');
+  const { language, toggleLanguage } = useLanguageToggle();
 
-  const toggleLanguage = () => {
-    setLanguage((prevLanguage) => (prevLanguage === 'english' ? 'hinglish' : 'english'));
-  };
+  if (loading) {
+    return (
+      <div className="text-center mt-20 text-2xl">
+        <div className="spinner-border" role="status"></div> Loading blogs...
+      </div>
+    );
+  }
 
-  if (loading) return <p>Loading blogs...</p>;
-  if (error) return <p>{error}</p>;
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-indigo-100 to-blue-50 flex flex-col">
@@ -40,7 +46,7 @@ const TechBlog = () => {
               <div
                 className="relative"
                 style={{
-                  height: "100%",
+                  height: '100%',
                   transform: 'rotateX(10deg) rotateY(-10deg)',
                   background: 'linear-gradient(145deg, #ffffff, #e6e6e6)',
                   borderRadius: '10px',
@@ -62,14 +68,12 @@ const TechBlog = () => {
                 </p>
 
                 <Link
-  to={`/blog/${blog._id}`}
-  className="text-indigo-500 hover:text-indigo-700 font-semibold text-lg flex items-center space-x-2
-             transform transition-all duration-300"
->
-  <IoMdSwap className="transform rotate-90" />
-  <span>Read more</span>
-</Link>
-
+                  to={`/blog/${blog._id}`}
+                  className="text-indigo-500 hover:text-indigo-700 font-semibold text-lg flex items-center space-x-2 transform transition-all duration-300"
+                >
+                  <IoMdSwap className="transform rotate-90" />
+                  <span>Read more</span>
+                </Link>
               </div>
               
               <div

@@ -5,8 +5,9 @@ const router = express.Router();
 
 // Create a new blog (protected route)
 router.post('/', auth, async (req, res) => {
-    const { title, description, author, category, tags } = req.body;
+    const { title, description, author, category, tags, htmlDescription } = req.body;
 
+    // Validation for required fields
     if (!title || !title.english || !title.hinglish || !description || !description.english || !description.hinglish) {
         return res.status(400).json({ message: 'Both English and Hinglish titles and descriptions are required' });
     }
@@ -18,7 +19,8 @@ router.post('/', auth, async (req, res) => {
             author,
             published_date: new Date(),
             category,
-            tags
+            tags,
+            htmlDescription  // Include the HTML content
         });
         await newBlog.save();
         res.status(201).json(newBlog);
@@ -30,8 +32,9 @@ router.post('/', auth, async (req, res) => {
 
 // Update a blog (protected route)
 router.put('/:id', auth, async (req, res) => {
-    const { title, description, author, category, tags } = req.body;
+    const { title, description, author, category, tags, htmlDescription } = req.body;
 
+    // Validation for required fields
     if ((title && (!title.english || !title.hinglish)) || (description && (!description.english || !description.hinglish))) {
         return res.status(400).json({ message: 'Both English and Hinglish titles and descriptions are required for update' });
     }
@@ -42,7 +45,8 @@ router.put('/:id', auth, async (req, res) => {
             description,
             author,
             category,
-            tags
+            tags,
+            htmlDescription  // Update the HTML content if present
         }, { new: true });
 
         if (!blog) {

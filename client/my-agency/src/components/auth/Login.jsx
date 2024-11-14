@@ -1,31 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { useAuth } from '../../context/AuthContext';
-import { Link, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaUserAlt, FaLock } from 'react-icons/fa';
+import useLogin from '../../hooks/useLogin'; // Import the custom hook
 
 const Login = () => {
-  const { login, error } = useAuth();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Hook for navigation
-
-  useEffect(() => {
-    // If a token is already in localStorage, redirect to dashboard
-    if (localStorage.getItem('token')) {
-      navigate('/dashboard');
-    }
-  }, [navigate]); // This will run once when the component mounts
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    await login(email, password);
-
-    // Check if login was successful by verifying if user data exists
-    if (localStorage.getItem('token')) {
-      // Redirect to dashboard if login is successful
-      navigate('/dashboard');
-    }
-  };
+  const { email, setEmail, password, setPassword, handleLogin, error } = useLogin();
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700">

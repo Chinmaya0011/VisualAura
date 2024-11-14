@@ -1,22 +1,14 @@
+// Navbar.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useSectionContext } from '../context/SectionContext';
+import { FaUserAlt, FaUserPlus } from 'react-icons/fa'; // Import FontAwesome icons
+import useAuth from '../hooks/useAuth'; // Import the custom hook
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isAdminOpen, setIsAdminOpen] = useState(false);
-
-  const { servicesRef, technologiesRef, portfolioRef, aboutUsRef, contactRef } = useSectionContext();
+  const isLoggedIn = useAuth(); // Use the custom hook to check if the user is logged in
 
   const toggleMenu = () => setIsOpen((prevState) => !prevState);
-  const toggleAdminDropdown = () => setIsAdminOpen((prevState) => !prevState);
-
-  const onSectionClick = (sectionRef) => {
-    window.scrollTo({
-      top: sectionRef.current.offsetTop,
-      behavior: 'smooth',
-    });
-  };
 
   return (
     <nav className="bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white shadow-lg">
@@ -39,60 +31,63 @@ const Navbar = () => {
         <div className={`w-full md:block md:w-auto ${isOpen ? 'block' : 'hidden'}`}>
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 md:mt-0 md:flex-row md:space-x-6 md:border-0 md:bg-transparent">
             <li>
-              <button onClick={() => onSectionClick(servicesRef)} className="block py-2 px-3 text-white rounded-md hover:bg-blue-800">
-                Services
-              </button>
-            </li>
-            <li>
-              <button onClick={() => onSectionClick(technologiesRef)} className="block py-2 px-3 text-white rounded-md hover:bg-blue-800">
-                Technologies
-              </button>
-            </li>
-            <li>
-              <button onClick={() => onSectionClick(portfolioRef)} className="block py-2 px-3 text-white rounded-md hover:bg-blue-800">
-                Portfolio
-              </button>
-            </li>
-            <li>
-              <button onClick={() => onSectionClick(aboutUsRef)} className="block py-2 px-3 text-white rounded-md hover:bg-blue-800">
-                About Us
-              </button>
-            </li>
-            <li>
-              <button onClick={() => onSectionClick(contactRef)} className="block py-2 px-3 text-white rounded-md hover:bg-blue-800">
-                Contact
-              </button>
-            </li>
-            <li>
-              <Link to="/blog" target="_blank" className="block py-2 px-3 text-white rounded-md hover:bg-blue-800">
-                Blog
+              <Link to="/aiml" className="block py-2 px-3 text-white rounded-md hover:bg-blue-800 transform transition-all duration-300 hover:scale-110 hover:rotate-3">
+                AI/ML
               </Link>
             </li>
-            <li className="relative">
-              <button
-                onClick={toggleAdminDropdown}
-                className="block py-2 px-3 text-white rounded-md hover:bg-blue-800 focus:outline-none"
-              >
-                Admin
-              </button>
-              {isAdminOpen && (
-                <div className="absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg z-10">
-                  <ul className="py-2">
-                    <li>
-                      <Link to="/login" className="block px-4 py-2 text-gray-700 hover:bg-gray-200">
-                        Login
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/signup" className="block px-4 py-2 text-gray-700 hover:bg-gray-200">
-                        Signup
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              )}
+            <li>
+              <Link to="/mobiles" className="block py-2 px-3 text-white rounded-md hover:bg-blue-800 transform transition-all duration-300 hover:scale-110 hover:rotate-3">
+                Mobiles
+              </Link>
+            </li>
+            <li>
+              <Link to="/laptops" className="block py-2 px-3 text-white rounded-md hover:bg-blue-800 transform transition-all duration-300 hover:scale-110 hover:rotate-3">
+                Laptops
+              </Link>
+            </li>
+            <li>
+              <Link to="/gadgets" className="block py-2 px-3 text-white rounded-md hover:bg-blue-800 transform transition-all duration-300 hover:scale-110 hover:rotate-3">
+                Gadgets
+              </Link>
+            </li>
+            <li>
+              <Link to="/social" className="block py-2 px-3 text-white rounded-md hover:bg-blue-800 transform transition-all duration-300 hover:scale-110 hover:rotate-3">
+                Social
+              </Link>
+            </li>
+            <li>
+              <Link to="/gaming" className="block py-2 px-3 text-white rounded-md hover:bg-blue-800 transform transition-all duration-300 hover:scale-110 hover:rotate-3">
+                Gaming
+              </Link>
             </li>
           </ul>
+        </div>
+        <div className="flex space-x-4 mt-4 md:mt-0">
+          {!isLoggedIn ? (
+            <>
+              <Link
+                to="/login"
+                className="flex items-center px-4 py-2 rounded-md bg-white text-blue-700 font-semibold hover:bg-blue-100 transition duration-300 transform hover:scale-105 hover:rotate-3"
+              >
+                <FaUserAlt className="mr-2" />
+                Login
+              </Link>
+              <Link
+                to="/signup"
+                className="flex items-center px-4 py-2 rounded-md bg-yellow-500 text-white font-semibold hover:bg-yellow-600 transition duration-300 transform hover:scale-105 hover:rotate-3"
+              >
+                <FaUserPlus className="mr-2" />
+                Join as Creator
+              </Link>
+            </>
+          ) : (
+            <Link
+              to="/dashboard"
+              className="flex items-center px-4 py-2 rounded-md bg-green-500 text-white font-semibold hover:bg-green-600 transition duration-300 transform hover:scale-105 hover:rotate-3"
+            >
+              Dashboard
+            </Link>
+          )}
         </div>
       </div>
     </nav>

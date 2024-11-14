@@ -13,7 +13,11 @@ const blogSchema = new mongoose.Schema({
     author: { type: String, required: true },
     published_date: { type: Date, default: Date.now },
     category: { type: String, required: true },
-    tags: [String] // Optional: Tags can help categorize or filter blogs
+    tags: [String], // Optional: Tags can help categorize or filter blogs
+    htmlDescription: { 
+        type: String, // No language-specific fields, just a plain string
+        required: false // Optional field for HTML description
+    }
 });
 
 // Export the model

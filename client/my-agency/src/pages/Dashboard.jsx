@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaCogs, FaEnvelope, FaPenNib, FaClipboardList, FaMailBulk } from 'react-icons/fa';
+import { FaCogs, FaEnvelope, FaPenNib, FaClipboardList, FaMailBulk,FaHome  } from 'react-icons/fa';
 import { MdRequestPage } from 'react-icons/md';
 import { BiLogOut } from 'react-icons/bi';
 import { AiOutlineSetting } from 'react-icons/ai';
@@ -11,8 +11,8 @@ const AdminDashboard = () => {
   // Define admin-only menu items with unique icons and route paths matching AppRoutes
   const menuItems = [
     { name: 'Settings', icon: <AiOutlineSetting />, route: '/settings' },
-    { name: 'Get Contact Page', icon: <FaEnvelope />, route: '/getcontact' }, // Adjusted route
-    { name: 'Get Free Requests', icon: <MdRequestPage />, route: '/getfreequotes' }, // Adjusted route
+    { name: 'Home', icon: <FaHome />, route: '/' }, // Added Home with FaHome icon
+
     { name: 'Create Blog', icon: <FaPenNib />, route: '/createblog' },
     { name: 'Manage Blogs', icon: <FaClipboardList />, route: '/manageblog' },
     { name: 'See All Newsletters', icon: <FaMailBulk />, route: '/newsletters' }, // Unique icon for newsletters
