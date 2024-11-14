@@ -14,8 +14,8 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-green-500 to-teal-600">
-      <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-lg transform transition-all duration-500 ">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 backdrop-blur-lg bg-opacity-30">
+      <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-lg transform transition-all duration-500">
         <h2 className="text-3xl font-extrabold text-center mb-6 text-gray-800">Signup</h2>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         <form onSubmit={handleSignup} className="space-y-6">

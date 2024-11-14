@@ -8,11 +8,13 @@ import { BlogProvider } from './context/BlogContext';
 import { AuthProvider } from './context/AuthContext';
 import { FormProvider } from './context/FormContext';
 import { ContactFormProvider } from './context/ContactFormContext';
+import { NewsletterProvider } from './context/NewsletterContext';
 const App = () => {
 
 
   // Render the app routes after loading
   return (
+    <NewsletterProvider>
     <ContactFormProvider>
     <FormProvider>
     <AuthProvider>
@@ -27,6 +29,7 @@ const App = () => {
     </AuthProvider>
 </FormProvider>
 </ContactFormProvider>
+</NewsletterProvider>
   );
 };
 

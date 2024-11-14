@@ -1,61 +1,65 @@
-import React, { useState } from 'react';
+// BlogDetail.js
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { IoMdSwap } from 'react-icons/io';
-import blogs from '../assets/blogs.json';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import LanguageToggleButton from '../components/LanguageToggleButton';
 import ShareBlogButton from '../components/ShareBlogButton';
+import { useBlogs } from '../context/BlogContext';
 
 const BlogDetail = () => {
   const { id } = useParams();
-  const blog = blogs.find((b) => b.id === parseInt(id));
+  const { fetchBlogById, loading, error } = useBlogs();
+  const [blog, setBlog] = useState(null);
   const [language, setLanguage] = useState('english');
 
-  // Early return for cases where blog isn't found
-  if (!blog || !blog.title || !blog.description) {
-    return <div className="text-center text-red-500 mt-20 text-2xl">Blog not found!</div>;
-  }
+  // Fetch blog by ID when component mounts
+  useEffect(() => {
+    const getBlog = async () => {
+      const blogData = await fetchBlogById(id);
+      setBlog(blogData);
+    };
+    getBlog();
+  }, [id]);
 
+  // Toggle between English and Hinglish
   const toggleLanguage = () => {
     setLanguage((prevLanguage) => (prevLanguage === 'english' ? 'hinglish' : 'english'));
   };
+
+  if (loading) return <div className="text-center mt-20 text-2xl">Loading...</div>;
+  if (error || !blog || !blog?.title) {
+    return <div className="text-center text-red-500 mt-20 text-2xl">Blog not found!</div>;
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
       <Navbar />
 
       <div className="container mx-auto px-4 py-10 flex-grow max-w-screen-md">
-        {/* Language Toggle */}
         <div className="flex justify-end mb-4">
           <LanguageToggleButton language={language} toggleLanguage={toggleLanguage} />
         </div>
 
-        {/* Blog Title */}
-        <h1 className="text-2xl font-bold text-start mb-6 text-blue-800 transition-transform duration-300">
+        <h1 className="text-4xl font-bold text-start mb-6 text-blue-800">
           {language === 'english' ? blog.title.english : blog.title.hinglish}
         </h1>
 
-        {/* Author and Date */}
         <div className="flex justify-start items-center text-sm text-gray-600 mb-4 mt-4 italic">
           <span className="font-medium">{blog.author}</span>
           <span className="mx-2">|</span>
-          <span>{blog.published_date}</span>
+          <span>{new Date(blog.published_date).toLocaleDateString()}</span>
         </div>
 
-        {/* Blog Content */}
-        <div className="rounded-lg leading-relaxed text-lg transition-all duration-300">
-          <p className="text-gray-700">
-            {language === 'english' ? blog.description.english : blog.description.hinglish}
-          </p>
-
-          {/* Share Button */}
-          <div className="mt-6 flex justify-end">
-            <ShareBlogButton />
-          </div>
+        <div className="rounded-lg leading-relaxed text-lg text-gray-800">
+          <p>{language === 'english' ? blog.description.english : blog.description.hinglish}</p>
         </div>
 
-        {/* Back to Blog List */}
+        <div className="mt-6 flex justify-end">
+          <ShareBlogButton />
+        </div>
+
         <div className="flex justify-center mt-10">
           <Link
             to="/blog"

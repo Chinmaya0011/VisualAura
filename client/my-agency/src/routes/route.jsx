@@ -16,8 +16,8 @@ import SignupPage from '../pages/SignupPage';
 import Dashboard from '../pages/Dashboard';
 import GetContactPage from '../pages/GetContactPage';
 import GetFreeQuotes from '../components/GetFreeQuotes';
-import PrivateRoute from '../components/PrivateRoute'; // Import PrivateRoute
-
+import PrivateRoute from '../components/PrivateRoute';
+import GetAllNewsletterPage from '../pages/GetAllNewsletterPage';
 const AppRoutes = () => {
   return (
     <Router>
@@ -40,6 +40,7 @@ const AppRoutes = () => {
         <Route path="/manageblog" element={<PrivateRoute element={ManageBlogPage} />} />
         <Route path="/getcontact" element={<PrivateRoute element={GetContactPage} />} />
         <Route path="/getfreequotes" element={<PrivateRoute element={GetFreeQuotes} />} />
+        <Route path="/getallnewsletter" element={<PrivateRoute element={GetAllNewsletterPage} />} />
 
         {/* Catch-all route for 404 */}
         <Route path="*" element={<NotFound />} />

@@ -28,7 +28,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-800 text-white py-10 mt-10">
+    <footer className="bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white py-10 ">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 justify-center items-start">
         {/* About Section */}
         <div className="space-y-4 text-center lg:text-left">

@@ -1,7 +1,6 @@
 const express = require('express');
 const Blog = require('../models/blog');
-const auth = require('../middleware/auth');  // Import auth middleware
-
+const auth = require('../middleware/verifyToken');  // Use only auth middleware, if both are the same
 const router = express.Router();
 
 // Create a new blog (protected route)
@@ -33,7 +32,7 @@ router.post('/', auth, async (req, res) => {
 router.put('/:id', auth, async (req, res) => {
     const { title, description, author, category, tags } = req.body;
 
-    if (title && (!title.english || !title.hinglish) || description && (!description.english || !description.hinglish)) {
+    if ((title && (!title.english || !title.hinglish)) || (description && (!description.english || !description.hinglish))) {
         return res.status(400).json({ message: 'Both English and Hinglish titles and descriptions are required for update' });
     }
 

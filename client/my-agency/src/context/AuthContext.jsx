@@ -1,5 +1,5 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
-import axios from 'axios';
+import React, { createContext, useState, useContext, useEffect } from "react";
+import axios from "axios";
 
 // Create the AuthContext
 const AuthContext = createContext();
@@ -17,19 +17,19 @@ export const AuthProvider = ({ children }) => {
 
   // Check for JWT token in localStorage and set user if token exists
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (token) {
-      // Optionally, make an API call to verify the token
+      // Optionally, make an API call to verify the token (handled by backend)
       axios
-        .get('/api/auth/verify-token', {
+        .get("http://localhost:5000/api/auth/verify-token", {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
-          setUser(response.data);  // Set user data from API response
+          setUser(response.data.user); // Set user data from API response
           setLoading(false);
         })
         .catch((err) => {
-          setError('Session expired');
+          setError("Session expired or invalid token");
           setLoading(false);
         });
     } else {
@@ -40,36 +40,42 @@ export const AuthProvider = ({ children }) => {
   // Login function
   const login = async (email, password) => {
     try {
-      const response = await axios.post('/api/auth/login', { email, password });
+      const response = await axios.post("http://localhost:5000/api/auth/login", {
+        email,
+        password,
+      });
       const { token, user } = response.data;
 
       // Store the token in localStorage and set user
-      localStorage.setItem('token', token);
+      localStorage.setItem("token", token);
       setUser(user);
       setError(null);
     } catch (err) {
-      setError('Invalid credentials');
+      setError("Invalid credentials");
     }
   };
 
   // Logout function
   const logout = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
     setUser(null);
   };
 
   // Register function
   const register = async (email, password) => {
     try {
-      const response = await axios.post('/api/auth/register', { email, password });
+      const response = await axios.post("http://localhost:5000/api/auth/signup", {
+        email,
+        password,
+      });
       const { token, user } = response.data;
 
       // Store the token in localStorage and set user
-      localStorage.setItem('token', token);
+      localStorage.setItem("token", token);
       setUser(user);
       setError(null);
     } catch (err) {
-      setError('Registration failed');
+      setError("Registration failed");
     }
   };
 

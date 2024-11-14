@@ -1,46 +1,72 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
-const User = require('../models/user');
+const User = require('../models/User');
 const dotenv = require('dotenv');
+const verifyToken = require('../middleware/verifyToken'); // Import the verifyToken middleware
 
 dotenv.config();
 
 const router = express.Router();
 
-// Sign-up route
+// Signup route
 router.post('/signup', async (req, res) => {
-    const { username, password } = req.body;
+  const { email, password } = req.body;
 
-    try {
-        const userExists = await User.findOne({ username });
-        if (userExists) return res.status(400).json({ message: 'User already exists' });
+  // Validation
+  if (!email || !password) {
+    return res.status(400).json({ message: 'Please provide email and password' });
+  }
 
-        const newUser = new User({ username, password });
-        await newUser.save();
-        res.status(201).json({ message: 'User created successfully' });
-    } catch (err) {
-        res.status(500).json({ message: 'Error creating user' });
+  try {
+    // Check if the user already exists
+    const userExists = await User.findOne({ email });
+    if (userExists) {
+      return res.status(400).json({ message: 'User already exists' });
     }
+
+    // Create a new user
+    const newUser = new User({ email, password });
+    await newUser.save();
+    res.status(201).json({ message: 'User created successfully' });
+  } catch (err) {
+    console.error('Error creating user:', err); // Log the error
+    res.status(500).json({ message: 'Error creating user' });
+  }
 });
 
 // Login route
 router.post('/login', async (req, res) => {
-    const { username, password } = req.body;
+  const { email, password } = req.body;
 
-    try {
-        const user = await User.findOne({ username });
-        if (!user) return res.status(400).json({ message: 'Invalid credentials' });
+  try {
+    // Find the user by email
+    const user = await User.findOne({ email });
+    if (!user) return res.status(400).json({ message: 'Invalid credentials' });
 
-        const isPasswordValid = await user.comparePassword(password);
-        if (!isPasswordValid) return res.status(400).json({ message: 'Invalid credentials' });
+    // Compare passwords
+    const isPasswordValid = await user.comparePassword(password);
+    if (!isPasswordValid) return res.status(400).json({ message: 'Invalid credentials' });
 
-        // Generate JWT token
-        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        res.json({ token });
-    } catch (err) {
-        res.status(500).json({ message: 'Error logging in' });
+    // Generate JWT token
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '2m' });
+    res.json({ token });
+  } catch (err) {
+    res.status(500).json({ message: 'Error logging in' });
+  }
+});
+
+// Token verification route
+router.get('/verify-token', verifyToken, async (req, res) => {
+  try {
+    // If the token is valid, return the user data from the decoded token
+    const user = await User.findById(req.user.userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
     }
+    res.json({ user });
+  } catch (err) {
+    res.status(500).json({ message: 'Error verifying token' });
+  }
 });
 
 module.exports = router;
