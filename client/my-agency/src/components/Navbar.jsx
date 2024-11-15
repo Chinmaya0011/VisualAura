@@ -71,38 +71,42 @@ const Navbar = () => {
                   Gaming
                 </Link>
               </li>
+              {/* Conditionally render mobile menu items */}
+              {!isLoggedIn ? (
+                <>
+                  <li>
+                    <Link
+                      to="/login"
+                      className="block py-2 px-3 text-white rounded-md hover:bg-blue-800 transform transition-all duration-300 hover:scale-110 hover:rotate-3"
+                      title="Login to your account"
+                    >
+                      Login
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/signup"
+                      className="block py-2 px-3 text-white rounded-md hover:bg-blue-800 transform transition-all duration-300 hover:scale-110 hover:rotate-3"
+                      title="Join as a creator"
+                    >
+                      Join as Creator
+                    </Link>
+                  </li>
+                </>
+              ) : (
+                <li>
+                  <Link
+                    to="/dashboard"
+                    className="block py-2 px-3 text-white rounded-md hover:bg-blue-800 transform transition-all duration-300 hover:scale-110 hover:rotate-3"
+                    title="Go to your dashboard"
+                  >
+                    Dashboard
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
-          <div className="flex space-x-4 mt-4 md:mt-0">
-            {!isLoggedIn ? (
-              <>
-                <Link
-                  to="/login"
-                  className="flex items-center px-4 py-2 rounded-md bg-white text-blue-700 font-semibold hover:bg-blue-100 transition duration-300 transform hover:scale-105 hover:rotate-3"
-                  title="Login to your account"
-                >
-                  <FaUserAlt className="mr-2" />
-                  Login
-                </Link>
-                <Link
-                  to="/signup"
-                  className="flex items-center px-4 py-2 rounded-md bg-yellow-500 text-white font-semibold hover:bg-yellow-600 transition duration-300 transform hover:scale-105 hover:rotate-3"
-                  title="Join as a creator"
-                >
-                  <FaUserPlus className="mr-2" />
-                  Join as Creator
-                </Link>
-              </>
-            ) : (
-              <Link
-                to="/dashboard"
-                className="flex items-center px-4 py-2 rounded-md bg-green-500 text-white font-semibold hover:bg-green-600 transition duration-300 transform hover:scale-105 hover:rotate-3"
-                title="Go to your dashboard"
-              >
-                Dashboard
-              </Link>
-            )}
-          </div>
+        
         </div>
       </nav>
     </>
