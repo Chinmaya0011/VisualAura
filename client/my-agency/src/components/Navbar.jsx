@@ -25,7 +25,7 @@ const Navbar = () => {
       <nav className="bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white shadow-lg" aria-label="Main Navigation">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-5">
           <Link to="/" className="flex items-center space-x-3" title="Go to homepage">
-            <span className="self-center text-4xl font-extrabold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-yellow-500 uppercase transform transition-all duration-300 hover:scale-110 hover:rotate-6">
+            <span className="self-center text-2xl lg:text-4xl font-extrabold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-yellow-500 uppercase transform transition-all duration-300  hover:rotate-1">
               VisualAura
             </span>
           </Link>

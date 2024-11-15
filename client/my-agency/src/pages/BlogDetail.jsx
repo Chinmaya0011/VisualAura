@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { IoMdSwap } from 'react-icons/io';
-import { Helmet } from 'react-helmet'; // Import React Helmet
+import { Helmet } from 'react-helmet'; // Import React Helmet for SEO
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import LanguageToggleButton from '../components/LanguageToggleButton';
@@ -14,11 +14,11 @@ const BlogDetail = () => {
   const { blog, loading, error } = useBlogDetail(id);
   const { language, toggleLanguage } = useLanguageToggle();
 
-  if (loading) return <div className="text-center mt-20 text-2xl">Loading...</div>;
+  if (loading) return <div className="text-center mt-20 text-xl sm:text-2xl">Loading...</div>;
 
   if (error || !blog || !blog?.title) {
     return (
-      <div className="text-center text-red-500 mt-20 text-2xl">
+      <div className="text-center text-red-500 mt-20 text-xl sm:text-2xl">
         {error ? 'Error fetching blog!' : 'Blog not found!'}
       </div>
     );
@@ -64,17 +64,20 @@ const BlogDetail = () => {
           <LanguageToggleButton language={language} toggleLanguage={toggleLanguage} />
         </div>
 
-        <h1 className="text-4xl font-bold text-start mb-6 text-blue-800">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center text-blue-800 mb-6">
           {language === 'english' ? blog.title.english : blog.title.hinglish}
         </h1>
 
-        <div className="flex justify-start items-center text-sm text-gray-600 mb-4 mt-4 italic">
+        <div className="flex justify-start items-center text-xs sm:text-sm md:text-base text-gray-600 mb-4 mt-4 italic">
           <span className="font-medium">{blog.author}</span>
           <span className="mx-2">|</span>
           <span>{new Date(blog.published_date).toLocaleDateString()}</span>
         </div>
-
-        <div className="rounded-lg leading-relaxed text-lg text-gray-800">
+        <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed mb-6">
+          {language === 'english' ? blog.description.english : blog.description.hinglish}
+        </p>
+        
+        <div className="rounded-lg shadow-lg bg-white p-6 text-sm sm:text-base md:text-lg text-gray-800 leading-relaxed mb-8">
           {/* Render HTML description directly */}
           {blog.htmlDescription ? (
             <div
@@ -84,7 +87,7 @@ const BlogDetail = () => {
               }}
             />
           ) : (
-            <p>{language === 'english' ? blog.description.english : blog.description.hinglish}</p>
+            <p className="text-gray-500">No additional content available.</p>
           )}
         </div>
 

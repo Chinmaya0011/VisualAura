@@ -43,7 +43,7 @@ const TechBlog = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-indigo-100 to-blue-50 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-b from-indigo-100 to-blue-50 flex flex-col overflow-y-auto">
       <Helmet>
         <title>Tech Blogs - Read the Latest Posts on Technology</title>
         <meta name="description" content="Explore the latest blogs on technology, software development, and more. Stay updated with tech trends and insights." />
@@ -55,21 +55,21 @@ const TechBlog = () => {
         <meta property="og:url" content="https://yourwebsite.com/blog" />
       </Helmet>
 
-      <div className="container mx-auto px-4 py-8 flex-grow max-w-7xl">
+      <div className="container mx-auto px-4 py-8 flex-grow ">
         <Suspense fallback={<div>Loading language toggle...</div>}>
           <LanguageToggleButton language={language} toggleLanguage={toggleLanguage} />
         </Suspense>
 
-        <h1 className="text-4xl font-bold text-center mb-12 text-indigo-800">
+        <h1 className="text-4xl font-bold text-center mb-8 text-indigo-800">
           All Blogs
         </h1>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {blogs.map((blog) => (
             <div
               key={blog._id}
-              className="p-6 relative overflow-hidden"
-              style={{ perspective: '1000px' }}
+              className="p-4 relative overflow-hidden"
+              style={{ perspective: '1000px', height: 'auto' }}
             >
               <div
                 className="relative"
