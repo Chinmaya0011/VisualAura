@@ -1,6 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+const User = require('../models/user');
 
 const dotenv = require('dotenv');
 const verifyToken = require('../middleware/verifyToken'); // Import the verifyToken middleware
