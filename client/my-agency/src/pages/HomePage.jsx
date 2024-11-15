@@ -3,7 +3,9 @@ import { Helmet } from 'react-helmet';  // Import React Helmet
 import TechBlog from '../components/Blog/TechBlog';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import NewsletterSubscription from '../components/NewsletterSubscription';
+import HeroSection from '../components/HeroSection';
+import TrendingBlog from '../components/Blog/TrendingBlog';
+import Categories from '../components/Categories';
 const HomePage = () => {
   return (
     <div>
@@ -40,9 +42,11 @@ const HomePage = () => {
 
       {/* Page content */}
       <Navbar />
+      <HeroSection/>
+      <TrendingBlog/>
+      <Categories/>
       <TechBlog />
       <Footer />
-      <NewsletterSubscription/>
     </div>
   );
 };

@@ -1,44 +1,37 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FaGamepad, FaMobileAlt, FaLaptop, FaRobot, FaCommentDots, FaTabletAlt } from 'react-icons/fa';
+import React from "react";
+import styles from "../styles/Categories.module.css"; // Import the CSS module
 
 const Categories = () => {
   const categories = [
-    { name: 'Gaming', icon: <FaGamepad />, path: '/gaming' },
-    { name: 'Social', icon: <FaCommentDots />, path: '/social' },
-    { name: 'Gadgets', icon: <FaTabletAlt />, path: '/gadgets' },
-    { name: 'Laptop', icon: <FaLaptop />, path: '/laptop' },
-    { name: 'Mobile', icon: <FaMobileAlt />, path: '/mobile' },
-    { name: 'AI & ML', icon: <FaRobot />, path: '/aiml' },
+    { name: "Artificial Intelligence", icon: "🤖" },
+    { name: "Web Development", icon: "💻" },
+    { name: "Mobile Apps", icon: "📱" },
+    { name: "Cloud Computing", icon: "☁️" },
+    { name: "Cybersecurity", icon: "🔒" },
+    { name: "Data Science", icon: "📊" },
+    { name: "DevOps", icon: "🔧" },
+    { name: "Blockchain", icon: "🔗" },
   ];
 
   return (
-    <div className="text-center p-8">
-      {/* Title and Description */}
-      <h1 className="p-2 text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 mb-5">
-        Discover Our Categories
-      </h1>
-     
+    <section className={styles.categoriesSection} >
+            <div className="container mx-auto px-4">
 
-      {/* Category Cards */}
-      <div className="flex flex-wrap gap-8 justify-center">
-        {categories.map((category) => (
-          <Link
-            to={category.path}
-            key={category.name}
-            className="category-card group flex flex-col items-center justify-center w-36 h-36 bg-gradient-to-br from-blue-500 to-purple-500 hover:from-purple-500 hover:to-pink-500 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300 ease-out hover:shadow-2xl relative overflow-hidden"
-          >
-            <div className="category-icon text-5xl text-white mb-2 group-hover:rotate-12 transform transition-transform duration-500 ease-in-out">
-              {category.icon}
+  <h2 className="text-4xl font-bold text-start mb-8 text-indigo-800">Explore Categories</h2>
+
+      
+      <div className={styles.categoriesContainer}>
+        {categories.map((category, index) => (
+          <div key={index} className={styles.categoryCard}>
+            <div className={styles.categoryIconContainer}>
+              <span className={styles.categoryIcon}>{category.icon}</span>
             </div>
-            <h3 className="category-name text-lg font-semibold text-white drop-shadow-lg transform transition-transform duration-300 group-hover:scale-110">
-              {category.name}
-            </h3>
-            <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/10 to-transparent blur-lg opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-          </Link>
+            <span className={styles.categoryName}>{category.name}</span>
+          </div>
         ))}
       </div>
-    </div>
+      </div>
+    </section>
   );
 };
 

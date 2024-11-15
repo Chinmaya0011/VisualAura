@@ -1,0 +1,76 @@
+.categoriesSection {
+    justify-content: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+  
+  .categoriesTitle {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .categoriesContainer {
+    justify-content: center;
+    display: flex;
+    overflow-x: auto; /* Allow horizontal scrolling */
+    gap: 20px;
+    padding-bottom: 10px; /* Optional, to add some spacing below cards */
+  }
+  
+  /* Hide scrollbar */
+  .categoriesContainer::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Style for individual category cards */
+  .categoryCard {
+    background-color: white;
+    border-radius: 12px; /* Slightly larger border-radius for smoother roundness */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 6px 24px rgba(0, 0, 0, 0.2); /* Multiple shadows for 3D effect */
+    width: 180px;
+    height: auto; /* Adjust height for better aspect ratio */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    position: relative;
+    background: linear-gradient(145deg, #ffffff, #f0f0f0); /* Subtle gradient background */
+  }
+  
+  
+  .categoryCard:hover {
+    transform: scale(1.05);
+  }
+  
+  .categoryIconContainer {
+    font-size: 40px;
+  }
+  
+  .categoryIcon {
+    font-size: 40px;
+  }
+  
+  .categoryName {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  /* Media queries */
+  @media (max-width: 768px) {
+    .categoriesContainer {
+      gap: 10px; /* Adjust gap for smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .categoryCard {
+      width: 120px; /* Adjust card size for smaller screens */
+    }
+  }
+  

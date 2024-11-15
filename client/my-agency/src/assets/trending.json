@@ -1,0 +1,43 @@
+[
+    {
+      "title": "Exploring the Future of AI",
+      "description": "A deep dive into the latest trends and innovations in Artificial Intelligence.",
+      "author": "John Doe",
+      "publishedDate": "2024-11-01",
+      "category": "Technology",
+      "tags": ["AI", "Innovation", "Tech"]
+    },
+    {
+      "title": "The Rise of React Native in Mobile Development",
+      "description": "How React Native is revolutionizing mobile app development across platforms.",
+      "author": "Jane Smith",
+      "publishedDate": "2024-11-05",
+      "category": "Development",
+      "tags": ["React Native", "Mobile Apps", "Development"]
+    },
+    {
+      "title": "Top 10 JavaScript Frameworks in 2024",
+      "description": "A comprehensive guide to the most popular JavaScript frameworks this year.",
+      "author": "Alex Turner",
+      "publishedDate": "2024-11-08",
+      "category": "Development",
+      "tags": ["JavaScript", "Frameworks", "Web Development"]
+    },
+    {
+      "title": "Understanding the Blockchain Revolution",
+      "description": "What is blockchain and how it's changing industries beyond cryptocurrency.",
+      "author": "Samantha Lee",
+      "publishedDate": "2024-11-12",
+      "category": "Blockchain",
+      "tags": ["Blockchain", "Cryptocurrency", "Technology"]
+    },
+    {
+      "title": "The Importance of User Experience in Web Design",
+      "description": "How to create user-centered websites that engage and retain visitors.",
+      "author": "Chris Johnson",
+      "publishedDate": "2024-11-15",
+      "category": "Design",
+      "tags": ["UX", "Web Design", "User Experience"]
+    }
+  ]
+  
