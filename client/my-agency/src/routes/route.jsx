@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NotFound from '../pages/NotFound';
-import Blogs from '../pages/Blogs';
+import HomePage from '../pages/HomePage';
 import BlogDetail from '../pages/BlogDetail';
 import AIML from '../components/Blog/AIML';
 import Mobiles from '../components/Blog/Mobiles';
@@ -16,13 +16,14 @@ import SignupPage from '../pages/SignupPage';
 import Dashboard from '../pages/Dashboard';
 import PrivateRoute from '../components/PrivateRoute';
 import GetAllNewsletterPage from '../pages/GetAllNewsletterPage';
-
+import Settings from '../pages/Settings';
+import ProfilePage from '../pages/ProfilePage';
 const AppRoutes = () => {
   return (
     <Router>
       <Routes>
         {/* Public Routes */}
-        <Route path="/" element={<Blogs />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/blog/:id" element={<BlogDetail />} />
         <Route path="/aiml" element={<AIML />} />
         <Route path="/mobiles" element={<Mobiles />} />
@@ -37,7 +38,9 @@ const AppRoutes = () => {
         <Route path="/dashboard" element={<PrivateRoute element={Dashboard} />} />
         <Route path="/createblog" element={<PrivateRoute element={CreateBlogPage} />} />
         <Route path="/manageblog" element={<PrivateRoute element={ManageBlogPage} />} />
-        <Route path="/getallnewsletter" element={<PrivateRoute element={GetAllNewsletterPage} />} />
+        <Route path="/newsletters" element={<PrivateRoute element={GetAllNewsletterPage} />} />
+        <Route path="/settings" element={<PrivateRoute element={Settings} />} />
+        <Route path="/profile" element={<PrivateRoute element={ProfilePage} />} />
 
         {/* Catch-all route for 404 */}
         <Route path="*" element={<NotFound />} />

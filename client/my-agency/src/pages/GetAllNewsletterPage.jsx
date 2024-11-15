@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNewsletterContext } from '../context/NewsletterContext';
+import { format } from 'date-fns'; // Importing date-fns for better date formatting
 
 const GetAllNewsletterPage = () => {
   // Destructure context values
@@ -29,14 +30,14 @@ const GetAllNewsletterPage = () => {
                 <div>
                   <p className="text-lg font-medium text-gray-800">{subscriber.email}</p>
                   <p className="text-sm text-gray-500">
-                    Subscribed on: {new Date(subscriber.subscribedAt).toLocaleDateString()}
+                    Subscribed on: {format(new Date(subscriber.subscribedAt), 'MMM dd, yyyy')} {/* Formatted date */}
                   </p>
                 </div>
               </li>
             ))}
           </ul>
         ) : (
-          !loading && !error && <p className="text-center text-gray-500">No subscribers found.</p>
+          !loading && !error && <p className="text-center text-gray-500 font-bold">No subscribers found.</p> 
         )}
       </div>
     </div>

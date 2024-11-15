@@ -14,13 +14,13 @@ export const BlogProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const API_BASE_URL = 'http://localhost:5000/api/blogs';  // Replace with your backend URL
+  const API_URL = import.meta.env.VITE_API_URL;
 
   // Fetch all blogs from the server
   const fetchBlogs = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(API_BASE_URL);
+      const response = await axios.get(`${API_URL}/blogs`);  // Corrected the URL
       setBlogs(response.data);
     } catch (err) {
       console.error(err.response || err.message);  // Log the error for debugging
@@ -34,7 +34,7 @@ export const BlogProvider = ({ children }) => {
   const fetchBlogById = async (id) => {
     setLoading(true);
     try {
-      const response = await axios.get(`${API_BASE_URL}/${id}`);
+      const response = await axios.get(`${API_URL}/blogs/${id}`);  // Corrected the URL
       return response.data;  // Return the blog data directly
     } catch (err) {
       console.error(err.response || err.message);
@@ -47,7 +47,7 @@ export const BlogProvider = ({ children }) => {
 
   // Create a new blog (send token in headers)
   const createBlog = async (newBlog) => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
 
     if (!token) {
       setError('Authorization token is missing');
@@ -56,7 +56,7 @@ export const BlogProvider = ({ children }) => {
 
     try {
       const response = await axios.post(
-        API_BASE_URL, 
+        `${API_URL}/blogs`,  // Corrected the URL
         newBlog,
         {
           headers: {
@@ -74,7 +74,7 @@ export const BlogProvider = ({ children }) => {
 
   // Update a blog (send token in headers)
   const updateBlog = async (id, updatedBlog) => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
 
     if (!token) {
       setError('Authorization token is missing');
@@ -83,7 +83,7 @@ export const BlogProvider = ({ children }) => {
 
     try {
       const response = await axios.put(
-        `${API_BASE_URL}/${id}`,
+        `${API_URL}/blogs/${id}`,  // Corrected the URL
         updatedBlog,
         {
           headers: {
@@ -103,7 +103,7 @@ export const BlogProvider = ({ children }) => {
 
   // Delete a blog (send token in headers)
   const deleteBlog = async (id) => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
 
     if (!token) {
       setError('Authorization token is missing');
@@ -111,7 +111,7 @@ export const BlogProvider = ({ children }) => {
     }
 
     try {
-      await axios.delete(`${API_BASE_URL}/${id}`, {
+      await axios.delete(`${API_URL}/blogs/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`, // Include the token in the header
         },
@@ -138,7 +138,7 @@ export const BlogProvider = ({ children }) => {
         createBlog,
         updateBlog,
         deleteBlog,
-        fetchBlogs, 
+        fetchBlogs,
       }}
     >
       {children}

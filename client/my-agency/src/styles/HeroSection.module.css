@@ -1,0 +1,225 @@
+/* HeroSection.module.css */
+
+/* Hero Section */
+.heroSection {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    overflow: hidden; /* Prevent overflow */
+  }
+  
+  .backgroundBlur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Blur effect */
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    padding: 2rem;
+    z-index: 1;
+    width: 100%;
+    flex-wrap: wrap;
+    overflow: hidden; /* Prevent overflow */
+  }
+  
+  .content {
+    flex: 0 0 60%;
+    padding-right: 2rem;
+    word-wrap: break-word; /* Prevent long words from breaking layout */
+    overflow-wrap: break-word;
+  }
+  
+  .rightSide {
+    flex: 0 0 35%;
+  }
+  
+  .blogTitle {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    white-space: nowrap; /* Prevent title overflow */
+  }
+  
+  .tagline {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-top: 2rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .listItem {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .ctaButton {
+    background-color: #0066ff;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 2rem;
+  }
+  
+  .ctaButton:hover {
+    background-color: #0055cc;
+  }
+  
+  .aboutBlog {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 1.5rem;
+    border-radius: 5px;
+    margin-bottom: 2rem;
+  }
+  
+  .aboutTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .aboutText {
+    font-size: 1rem;
+    line-height: 1.6;
+    word-wrap: break-word;
+  }
+  
+  .categoryContainer {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 1.5rem;
+    border-radius: 5px;
+  }
+  
+  .categoryTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .categoryList {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .categoryLink {
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .categoryLink:hover {
+    color: #ff9900;
+  }
+  
+  /* Media Queries for responsiveness */
+  @media (max-width: 1200px) {
+    .container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .content {
+      flex: 0 0 100%;
+      padding-right: 0;
+    }
+  
+    .rightSide {
+      flex: 0 0 100%;
+      margin-top: 2rem;
+    }
+  
+    .heroSection {
+      height: auto;
+      padding: 3rem 0;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .blogTitle {
+      font-size: 2.5rem;
+    }
+  
+    .tagline {
+      font-size: 1.2rem;
+    }
+  
+    .title {
+      font-size: 1.8rem;
+    }
+  
+    .subtitle {
+      font-size: 0.9rem;
+    }
+  
+    .ctaButton {
+      padding: 0.8rem 1.5rem;
+    }
+  
+    .categoryLink {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .blogTitle {
+      font-size: 2rem;
+    }
+  
+    .tagline {
+      font-size: 1rem;
+    }
+  
+    .title {
+      font-size: 1.5rem;
+    }
+  
+    .subtitle {
+      font-size: 0.8rem;
+    }
+  
+    .ctaButton {
+      padding: 0.8rem 1.2rem;
+    }
+  
+    .aboutBlog,
+    .categoryContainer {
+      padding: 1rem;
+    }
+  
+    .categoryLink {
+      font-size: 0.8rem;
+    }
+  }
+  

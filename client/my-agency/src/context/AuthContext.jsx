@@ -15,13 +15,16 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Get API URL from environment variables
+  const API_URL = import.meta.env.VITE_API_URL;
+
   // Check for JWT token in localStorage and set user if token exists
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       // Optionally, make an API call to verify the token (handled by backend)
       axios
-        .get("http://localhost:5000/api/auth/verify-token", {
+        .get(`${API_URL}/auth/verify-token`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
@@ -35,12 +38,12 @@ export const AuthProvider = ({ children }) => {
     } else {
       setLoading(false);
     }
-  }, []);
+  }, [API_URL]);
 
   // Login function
   const login = async (email, password) => {
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/login", {
+      const response = await axios.post(`${API_URL}/auth/login`, {
         email,
         password,
       });
@@ -64,7 +67,7 @@ export const AuthProvider = ({ children }) => {
   // Register function
   const register = async (email, password) => {
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/signup", {
+      const response = await axios.post(`${API_URL}/auth/signup`, {
         email,
         password,
       });

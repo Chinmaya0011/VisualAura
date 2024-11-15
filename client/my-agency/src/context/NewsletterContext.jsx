@@ -1,5 +1,4 @@
-// context/NewsletterContext.js
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 // Create the context
@@ -15,14 +14,23 @@ export const NewsletterProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   // Function to fetch all subscribers
-  const fetchSubscribers = async () => {
+  const fetchSubscribers = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await axios.get('/api/newsletter/subscribers'); // Update this with your API endpoint
+      const token = localStorage.getItem('token'); // Retrieve the token from local storage or context
+
+      const response = await axios.get(`${API_URL}/newsletter/subscribers`, {
+        headers: {
+          Authorization: `Bearer ${token}`, // Include the token in the request header
+        },
+      });
+
       if (response.data && Array.isArray(response.data)) {
-        setSubscribers(response.data);  // Ensure data is an array before setting it
-        setError(null);
+        setSubscribers(response.data); // Ensure data is an array before setting it
+        setError(null); // Clear any previous errors
       } else {
         setError('Invalid data format');
       }
@@ -32,17 +40,28 @@ export const NewsletterProvider = ({ children }) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [API_URL]);
 
   // Function to subscribe a user
   const subscribeUser = async (email) => {
     setLoading(true);
     try {
-      const response = await axios.post('/api/newsletter/subscribe', { email }); // POST endpoint for subscription
+      const token = localStorage.getItem('token'); // Retrieve the token from local storage or context
+
+      const response = await axios.post(
+        `${API_URL}/newsletter/subscribe`,
+        { email },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Include the token in the request header
+          },
+        }
+      );
+
       setSuccessMessage('Successfully subscribed!');
       setError(null);
-      // Optionally, refetch subscribers to update the list
-      fetchSubscribers();
+      setTimeout(() => setSuccessMessage(null), 3000); // Remove success message after 3 seconds
+      fetchSubscribers(); // Refetch the subscribers after successful subscription
     } catch (err) {
       console.error(err); // Log the error for debugging
       setError('Failed to subscribe');
@@ -55,10 +74,19 @@ export const NewsletterProvider = ({ children }) => {
   // Fetch subscribers when the context loads
   useEffect(() => {
     fetchSubscribers();
-  }, []); // Only fetch once when the component mounts
+  }, [fetchSubscribers]); // Only fetch once when the component mounts
 
   return (
-    <NewsletterContext.Provider value={{ subscribers, loading, error, successMessage, fetchSubscribers, subscribeUser }}>
+    <NewsletterContext.Provider
+      value={{
+        subscribers,
+        loading,
+        error,
+        successMessage,
+        fetchSubscribers,
+        subscribeUser,
+      }}
+    >
       {children}
     </NewsletterContext.Provider>
   );

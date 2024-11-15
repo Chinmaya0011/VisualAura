@@ -1,8 +1,7 @@
-// src/pages/BlogDetail.js
-
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { IoMdSwap } from 'react-icons/io';
+import { Helmet } from 'react-helmet'; // Import React Helmet
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import LanguageToggleButton from '../components/LanguageToggleButton';
@@ -27,6 +26,37 @@ const BlogDetail = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
+      {/* SEO Meta Tags */}
+      <Helmet>
+        <title>{language === 'english' ? blog.title.english : blog.title.hinglish}</title>
+        <meta
+          name="description"
+          content={language === 'english' ? blog.description.english : blog.description.hinglish}
+        />
+        <meta
+          name="keywords"
+          content="blog, technology, tech trends, programming, gadgets, tutorials"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta
+          property="og:title"
+          content={language === 'english' ? blog.title.english : blog.title.hinglish}
+        />
+        <meta
+          property="og:description"
+          content={language === 'english' ? blog.description.english : blog.description.hinglish}
+        />
+        <meta property="og:image" content={blog.image || 'https://example.com/default-image.jpg'} />
+        <meta property="og:url" content={`https://example.com/blog/${id}`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={language === 'english' ? blog.title.english : blog.title.hinglish} />
+        <meta
+          name="twitter:description"
+          content={language === 'english' ? blog.description.english : blog.description.hinglish}
+        />
+        <meta name="twitter:image" content={blog.image || 'https://example.com/default-image.jpg'} />
+      </Helmet>
+
       <Navbar />
 
       <div className="container mx-auto px-4 py-10 flex-grow max-w-screen-md">
