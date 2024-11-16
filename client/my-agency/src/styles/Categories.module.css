@@ -69,6 +69,10 @@
   }
   
   @media (max-width: 480px) {
+    .categoriesContainer {
+      width: 100%;
+      justify-content: start;
+    }
     .categoryCard {
       width: 120px; /* Adjust card size for smaller screens */
     }
